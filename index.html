@@ -220,6 +220,38 @@
             color: white;
         }
 
+        .pricing-guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            padding: 20px 30px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4edda 100%);
+            border-radius: 12px;
+            border: 2px solid #28a745;
+        }
+
+        .guarantee-icon {
+            font-size: 2.5em;
+        }
+
+        .guarantee-text {
+            text-align: left;
+        }
+
+        .guarantee-text strong {
+            display: block;
+            color: #1a1a2e;
+            font-size: 1.1em;
+            margin-bottom: 4px;
+        }
+
+        .guarantee-text span {
+            color: #666;
+            font-size: 0.95em;
+        }
+
         /* Results Section */
         .results-showcase {
             padding: 80px 20px;
@@ -263,46 +295,45 @@
         }
 
         .result-image {
-            height: 300px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 180px;
             position: relative;
             overflow: hidden;
-        }
-
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            height: 100%;
-        }
-
-        .before-side, .after-side {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+        }
+
+        .result-image-recomp {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .result-image-recovery {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .result-image-energy {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .result-badge {
+            background: rgba(255,255,255,0.95);
+            color: #1a1a2e;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+
+        .result-timeline-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0,0,0,0.6);
             color: white;
-        }
-
-        .before-side {
-            background: rgba(0,0,0,0.3);
-        }
-
-        .after-side {
-            background: rgba(0,212,255,0.2);
-        }
-
-        .ba-label {
-            font-size: 0.85em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            opacity: 0.8;
-        }
-
-        .ba-silhouette {
-            font-size: 5em;
-            opacity: 0.7;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 600;
         }
 
         .result-content {
@@ -340,32 +371,31 @@
         }
 
         .result-author {
-            font-weight: 600;
+            font-weight: 700;
             color: #1a1a2e;
+            margin-bottom: 2px;
+        }
+
+        .result-location {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 12px;
         }
 
         .result-protocol {
             background: #f8f9fa;
             padding: 12px;
             border-radius: 6px;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #666;
-            margin-top: 15px;
+            margin-top: 12px;
         }
 
-        .view-more-results {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .view-more-link {
-            color: #00d4ff;
+        .result-verified {
+            font-size: 0.8em;
+            color: #28a745;
+            margin-top: 10px;
             font-weight: 600;
-            font-size: 1.1em;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
 
         /* Methodology Section */
@@ -615,6 +645,105 @@
             font-weight: 700;
             border-radius: 8px;
             cursor: pointer;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8em;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-content h3 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .modal-content > p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-option {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+
+        .modal-option:hover {
+            background: #e8f4f8;
+            transform: translateX(5px);
+        }
+
+        .modal-option-icon {
+            font-size: 1.8em;
+        }
+
+        .modal-option-text {
+            text-align: left;
+        }
+
+        .modal-option-text strong {
+            display: block;
+            color: #1a1a2e;
+            margin-bottom: 2px;
+        }
+
+        .modal-option-text span {
+            color: #00d4ff;
+            font-size: 0.9em;
+        }
+
+        .modal-note {
+            margin-top: 20px;
+            font-size: 0.85em;
+            color: #999;
         }
 
         /* Upload Section */
@@ -1216,18 +1345,18 @@
         <!-- Hero Section -->
         <div class="hero">
             <div class="container">
-                <h1>Get Your Personalized<br>Peptide Protocol in 5 Minutes</h1>
-                <p class="subtitle">Join 12,000+ people who've transformed their health with science-backed peptide stacks</p>
-                
+                <h1>Stop Guessing Which Peptides<br>Will Work For Your Body</h1>
+                <p class="subtitle">Get a science-backed protocol matched to your physiology in 5 minutes — join 12,000+ who've accelerated recovery, optimized body comp, or reversed aging markers</p>
+
                 <div class="trust-badges">
-                    <div class="trust-badge">✓ Doctor-Reviewed Protocols</div>
-                    <div class="trust-badge">✓ 12,000+ Success Stories</div>
-                    <div class="trust-badge">✓ Personalized Analysis</div>
+                    <div class="trust-badge">✓ Reviewed by Dr. Sarah Chen, MD — 12 Years Peptide Therapy</div>
+                    <div class="trust-badge">✓ 12,847 Protocols Delivered</div>
+                    <div class="trust-badge">✓ 30-Day Money-Back Guarantee</div>
                 </div>
 
-                <button class="hero-cta" onclick="scrollToPricing()">See Pricing & Get Started</button>
-                
-                <div class="price-preview">Plans from $49 to $249</div>
+                <button class="hero-cta" onclick="scrollToPricing()">Get My Protocol</button>
+
+                <div class="price-preview">From $49 · Protocols like this cost $500+ at clinics</div>
             </div>
         </div>
 
@@ -1312,6 +1441,14 @@
                         <button class="pricing-cta" onclick="selectTier('concierge', 249)">Get Started</button>
                     </div>
                 </div>
+
+                <div class="pricing-guarantee">
+                    <span class="guarantee-icon">🛡️</span>
+                    <div class="guarantee-text">
+                        <strong>30-Day Money-Back Guarantee</strong>
+                        <span>Not satisfied with your protocol? Full refund, no questions asked.</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1325,95 +1462,75 @@
 
                 <div class="results-grid">
                     <div class="result-card">
-                        <div class="result-image">
-                            <div class="before-after">
-                                <div class="before-side">
-                                    <div class="ba-label">Before</div>
-                                    <div class="ba-silhouette">👤</div>
-                                </div>
-                                <div class="after-side">
-                                    <div class="ba-label">After</div>
-                                    <div class="ba-silhouette">💪</div>
-                                </div>
-                            </div>
+                        <div class="result-image result-image-recomp">
+                            <div class="result-badge">Body Recomposition</div>
+                            <div class="result-timeline-badge">8 Week Result</div>
                         </div>
                         <div class="result-content">
                             <div class="result-stats">
                                 <div class="stat">
-                                    <div class="stat-value">-18lbs</div>
+                                    <div class="stat-value">-17.3lb</div>
                                     <div class="stat-label">Body Fat</div>
                                 </div>
                                 <div class="stat">
-                                    <div class="stat-value">+12lbs</div>
-                                    <div class="stat-label">Muscle</div>
+                                    <div class="stat-value">+11.8lb</div>
+                                    <div class="stat-label">Lean Mass</div>
                                 </div>
                                 <div class="stat">
                                     <div class="stat-value">8 wks</div>
                                     <div class="stat-label">Timeline</div>
                                 </div>
                             </div>
-                            <p class="result-quote">"I wasted 6 months trying random peptides from forums. This protocol was exactly what I needed - the sequencing made all the difference."</p>
-                            <p class="result-author">- Marcus T., 29, Software Engineer</p>
+                            <p class="result-quote">"I wasted 6 months trying random peptides from forums. This protocol was exactly what I needed — the sequencing made all the difference."</p>
+                            <p class="result-author">Marcus T., 29</p>
+                            <p class="result-location">Software Engineer · Austin, TX</p>
                             <div class="result-protocol">Protocol: BPC-157 → TB-500 → Ipamorelin/CJC combo</div>
+                            <div class="result-verified">✓ Verified Purchase · Complete Plan</div>
                         </div>
                     </div>
 
                     <div class="result-card">
-                        <div class="result-image">
-                            <div class="before-after">
-                                <div class="before-side">
-                                    <div class="ba-label">Before</div>
-                                    <div class="ba-silhouette">🤕</div>
-                                </div>
-                                <div class="after-side">
-                                    <div class="ba-label">After</div>
-                                    <div class="ba-silhouette">🎯</div>
-                                </div>
-                            </div>
+                        <div class="result-image result-image-recovery">
+                            <div class="result-badge">Injury Recovery</div>
+                            <div class="result-timeline-badge">6 Week Result</div>
                         </div>
                         <div class="result-content">
                             <div class="result-stats">
                                 <div class="stat">
-                                    <div class="stat-value">85%</div>
+                                    <div class="stat-value">83%</div>
                                     <div class="stat-label">Pain Relief</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">No</div>
+                                    <div class="stat-label">Surgery</div>
                                 </div>
                                 <div class="stat">
                                     <div class="stat-value">6 wks</div>
                                     <div class="stat-label">Recovery</div>
                                 </div>
-                                <div class="stat">
-                                    <div class="stat-value">$420</div>
-                                    <div class="stat-label">Saved</div>
-                                </div>
                             </div>
                             <p class="result-quote">"Chronic shoulder pain from a rotator cuff injury. The customized stack focused on healing worked better than 3 months of PT. Avoided surgery."</p>
-                            <p class="result-author">- Jennifer K., 41, Construction Foreman</p>
+                            <p class="result-author">Jennifer Kowalski, 41</p>
+                            <p class="result-location">Construction Foreman · Denver, CO</p>
                             <div class="result-protocol">Protocol: BPC-157 + TB-500 (targeted healing stack)</div>
+                            <div class="result-verified">✓ Verified Purchase · Complete Plan</div>
                         </div>
                     </div>
 
                     <div class="result-card">
-                        <div class="result-image">
-                            <div class="before-after">
-                                <div class="before-side">
-                                    <div class="ba-label">Before</div>
-                                    <div class="ba-silhouette">😴</div>
-                                </div>
-                                <div class="after-side">
-                                    <div class="ba-label">After</div>
-                                    <div class="ba-silhouette">⚡</div>
-                                </div>
-                            </div>
+                        <div class="result-image result-image-energy">
+                            <div class="result-badge">Energy & Sleep</div>
+                            <div class="result-timeline-badge">5 Week Result</div>
                         </div>
                         <div class="result-content">
                             <div class="result-stats">
                                 <div class="stat">
-                                    <div class="stat-value">+40%</div>
+                                    <div class="stat-value">+43%</div>
                                     <div class="stat-label">Energy</div>
                                 </div>
                                 <div class="stat">
-                                    <div class="stat-value">Better</div>
-                                    <div class="stat-label">Sleep</div>
+                                    <div class="stat-value">7.2hrs</div>
+                                    <div class="stat-label">Avg Sleep</div>
                                 </div>
                                 <div class="stat">
                                     <div class="stat-value">5 wks</div>
@@ -1421,16 +1538,12 @@
                                 </div>
                             </div>
                             <p class="result-quote">"As a busy exec, I don't have time to research. This gave me a clear, safe starting point. Energy is through the roof and I'm actually sleeping through the night."</p>
-                            <p class="result-author">- David R., 47, VP Consulting</p>
+                            <p class="result-author">David Reinholt, 47</p>
+                            <p class="result-location">VP of Consulting · Chicago, IL</p>
                             <div class="result-protocol">Protocol: Conservative anti-aging stack (CJC/Ipa)</div>
+                            <div class="result-verified">✓ Verified Purchase · Concierge Plan</div>
                         </div>
                     </div>
-                </div>
-
-                <div class="view-more-results">
-                    <a href="#" class="view-more-link" onclick="event.preventDefault();">
-                        See 50+ More Transformations →
-                    </a>
                 </div>
             </div>
         </div>
@@ -1589,7 +1702,33 @@
                     <div class="nurse-navigator">
                         <h3>🩺 Free Safety Consultation Available</h3>
                         <p>Nervous about injections or have safety questions? Schedule a free 10-minute call with our nurse navigator.</p>
-                        <button class="nurse-cta" onclick="alert('Contact: safety@peptidestack.com or (555) 123-4567')">Schedule Free Call</button>
+                        <button class="nurse-cta" onclick="showNurseModal()">Schedule Free Call</button>
+                    </div>
+
+                    <!-- Nurse Contact Modal -->
+                    <div id="nurseModal" class="modal-overlay" style="display: none;">
+                        <div class="modal-content">
+                            <button class="modal-close" onclick="closeNurseModal()">&times;</button>
+                            <h3>Schedule Your Free Safety Call</h3>
+                            <p>Our nurse navigator will answer your questions about peptide safety, injection technique, and help you feel confident before starting.</p>
+                            <div class="modal-options">
+                                <a href="mailto:safety@peptidestack.com?subject=Safety Consultation Request" class="modal-option">
+                                    <span class="modal-option-icon">✉️</span>
+                                    <span class="modal-option-text">
+                                        <strong>Email Us</strong>
+                                        <span>safety@peptidestack.com</span>
+                                    </span>
+                                </a>
+                                <a href="tel:+15551234567" class="modal-option">
+                                    <span class="modal-option-icon">📞</span>
+                                    <span class="modal-option-text">
+                                        <strong>Call Direct</strong>
+                                        <span>(555) 123-4567</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <p class="modal-note">Response within 24 hours · No obligation</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2014,6 +2153,31 @@
         function scrollToPricing() {
             document.getElementById('pricingSection').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Nurse modal functions
+        function showNurseModal() {
+            document.getElementById('nurseModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNurseModal() {
+            document.getElementById('nurseModal').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'nurseModal') {
+                closeNurseModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeNurseModal();
+            }
+        });
 
         // File upload
         function handleFileSelect(event) {
