@@ -746,6 +746,197 @@
             color: #999;
         }
 
+        /* Questionnaire Styles */
+        .questionnaire-form {
+            margin-top: 30px;
+        }
+
+        .question-step h3 {
+            color: #1a1a2e;
+            font-size: 1.5em;
+            margin-bottom: 8px;
+        }
+
+        .question-subtitle {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .goal-options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .goal-option input {
+            display: none;
+        }
+
+        .goal-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .goal-card:hover {
+            border-color: #00d4ff;
+            background: #f8fcff;
+        }
+
+        .goal-option input:checked + .goal-card {
+            border-color: #00d4ff;
+            background: linear-gradient(135deg, #e8f7ff 0%, #f0faff 100%);
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.2);
+        }
+
+        .goal-icon {
+            font-size: 2em;
+        }
+
+        .goal-card strong {
+            display: block;
+            color: #1a1a2e;
+            font-size: 1.1em;
+        }
+
+        .goal-card span {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+
+        .form-hint {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .next-step-btn,
+        .back-step-btn {
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .next-step-btn {
+            background: #00d4ff;
+            color: #1a1a2e;
+            width: 100%;
+            margin-top: 25px;
+        }
+
+        .next-step-btn:hover {
+            background: #00b8e6;
+            transform: translateY(-2px);
+        }
+
+        .back-step-btn {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .back-step-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .step-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .step-buttons .next-step-btn {
+            flex: 1;
+            margin-top: 0;
+        }
+
+        .form-error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .guarantee-note {
+            text-align: center;
+            color: #666;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Upload Section */
         .upload-section {
             display: none;
@@ -1734,14 +1925,14 @@
             </div>
         </div>
 
-        <!-- Upload Section (Hidden Initially) -->
+        <!-- Questionnaire Section (Hidden Initially) -->
         <div class="upload-section" id="uploadSection">
             <div class="container">
                 <div class="upload-container">
                     <div class="selected-tier-banner">
                         <div>
                             <h3 id="selectedTierName">Complete Plan</h3>
-                            <p style="opacity: 0.9; margin-top: 5px;">Full 3-phase protocol with implementation guide</p>
+                            <p style="opacity: 0.9; margin-top: 5px;" id="selectedTierDesc">Full 3-phase protocol with implementation guide</p>
                         </div>
                         <div class="price" id="selectedTierPrice">$79</div>
                     </div>
@@ -1749,67 +1940,148 @@
                     <div class="upload-steps">
                         <div class="upload-step active" id="step1">
                             <div class="step-circle">1</div>
-                            <div class="step-label">Upload Photo</div>
+                            <div class="step-label">Your Goals</div>
                         </div>
                         <div class="upload-step" id="step2">
                             <div class="step-circle">2</div>
-                            <div class="step-label">Payment</div>
+                            <div class="step-label">Your Profile</div>
                         </div>
                         <div class="upload-step" id="step3">
                             <div class="step-circle">3</div>
-                            <div class="step-label">Protocol</div>
+                            <div class="step-label">Get Protocol</div>
                         </div>
                     </div>
 
-                    <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
-                        <div id="uploadPrompt">
-                            <div class="upload-icon">📸</div>
-                            <p style="font-size: 1.3em; color: #1a1a2e; font-weight: 600; margin-bottom: 10px;">Upload Your Photo</p>
-                            <p style="color: #666;">Full body or torso photo works best</p>
-                            <p style="color: #999; font-size: 0.9em; margin-top: 10px;">JPEG or PNG • Max 10MB</p>
-                        </div>
-                        <img id="previewImage" class="preview-image" style="display: none;">
-                    </div>
-                    <input type="file" id="fileInput" accept="image/*" onchange="handleFileSelect(event)">
+                    <!-- Questionnaire Form -->
+                    <form id="questionnaireForm" class="questionnaire-form">
+                        <!-- Step 1: Goals -->
+                        <div class="question-step" id="questionStep1">
+                            <h3>What's your primary goal?</h3>
+                            <p class="question-subtitle">Select the main outcome you want to achieve</p>
 
-                    <!-- Consultation Section (Only for Concierge) -->
-                    <div class="consultation-section" id="consultationSection" style="display: none;">
-                        <h3>📅 Schedule Your Consultation</h3>
-                        <p style="color: #666; margin-bottom: 20px;">Select your preferred date and time for your 15-minute video consultation</p>
-                        
-                        <div class="consultation-scheduler">
-                            <input type="date" id="consultDate" min="">
-                            <select id="consultTime">
-                                <option>9:00 AM</option>
-                                <option>10:00 AM</option>
-                                <option>11:00 AM</option>
-                                <option>1:00 PM</option>
-                                <option>2:00 PM</option>
-                                <option>3:00 PM</option>
-                                <option>4:00 PM</option>
-                            </select>
-                            <input type="email" placeholder="Your email" id="consultEmail">
-                            <input type="tel" placeholder="Phone number" id="consultPhone">
-                        </div>
-                    </div>
+                            <div class="goal-options">
+                                <label class="goal-option">
+                                    <input type="radio" name="primaryGoal" value="fat_loss" required>
+                                    <div class="goal-card">
+                                        <span class="goal-icon">🔥</span>
+                                        <strong>Fat Loss</strong>
+                                        <span>Reduce body fat, improve composition</span>
+                                    </div>
+                                </label>
+                                <label class="goal-option">
+                                    <input type="radio" name="primaryGoal" value="muscle">
+                                    <div class="goal-card">
+                                        <span class="goal-icon">💪</span>
+                                        <strong>Build Muscle</strong>
+                                        <span>Increase lean mass, strength</span>
+                                    </div>
+                                </label>
+                                <label class="goal-option">
+                                    <input type="radio" name="primaryGoal" value="recovery">
+                                    <div class="goal-card">
+                                        <span class="goal-icon">🩹</span>
+                                        <strong>Injury Recovery</strong>
+                                        <span>Heal faster, reduce pain</span>
+                                    </div>
+                                </label>
+                                <label class="goal-option">
+                                    <input type="radio" name="primaryGoal" value="anti_aging">
+                                    <div class="goal-card">
+                                        <span class="goal-icon">⏳</span>
+                                        <strong>Anti-Aging</strong>
+                                        <span>Longevity, vitality, skin health</span>
+                                    </div>
+                                </label>
+                                <label class="goal-option">
+                                    <input type="radio" name="primaryGoal" value="energy">
+                                    <div class="goal-card">
+                                        <span class="goal-icon">⚡</span>
+                                        <strong>Energy & Sleep</strong>
+                                        <span>Better energy, deeper sleep</span>
+                                    </div>
+                                </label>
+                            </div>
 
-                    <div class="payment-container" id="paymentContainer" style="display: none;">
-                        <div class="payment-header">
-                            <h3>Secure Payment</h3>
-                            <div class="payment-price" id="paymentPrice">$79</div>
+                            <button type="button" class="next-step-btn" onclick="nextStep(1)">Continue</button>
                         </div>
-                        
-                        <div id="card-element"></div>
-                        <div id="card-errors" style="color: #dc3545; margin-bottom: 15px;"></div>
-                        
-                        <button class="submit-btn" id="submitBtn" onclick="processPayment()" disabled>
-                            🔒 Get My Protocol
-                        </button>
 
-                        <div class="guarantee-badge">
-                            <strong>💯 30-Day Money-Back Guarantee</strong><br>
-                            Not satisfied? Get a full refund, no questions asked.
+                        <!-- Step 2: Profile -->
+                        <div class="question-step" id="questionStep2" style="display: none;">
+                            <h3>Tell us about yourself</h3>
+                            <p class="question-subtitle">This helps us personalize your protocol</p>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                    <span class="form-hint">Your protocol will be delivered here</span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="age">Age *</label>
+                                    <input type="number" id="age" name="age" required min="18" max="100" placeholder="35">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="weight">Weight (lbs)</label>
+                                    <input type="number" id="weight" name="weight" min="80" max="500" placeholder="175">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="experience">Peptide Experience</label>
+                                    <select id="experience" name="experience">
+                                        <option value="none">No prior experience</option>
+                                        <option value="some">Some experience (1-2 cycles)</option>
+                                        <option value="experienced">Experienced (3+ cycles)</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="injectionComfort">Comfort with Injections</label>
+                                    <select id="injectionComfort" name="injectionComfort">
+                                        <option value="comfortable">Comfortable</option>
+                                        <option value="nervous">Nervous but willing</option>
+                                        <option value="prefer_oral">Prefer oral if possible</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group full-width">
+                                    <label>Any health conditions? (Check all that apply)</label>
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="conditions" value="none"> None
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="conditions" value="diabetes"> Diabetes
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="conditions" value="thyroid"> Thyroid issues
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="conditions" value="heart"> Heart condition
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="conditions" value="cancer_history"> Cancer history
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="step-buttons">
+                                <button type="button" class="back-step-btn" onclick="prevStep(2)">Back</button>
+                                <button type="button" class="next-step-btn" onclick="submitQuestionnaire()">
+                                    <span id="checkoutBtnText">Proceed to Checkout</span>
+                                    <span id="checkoutBtnLoading" style="display: none;">Processing...</span>
+                                </button>
+                            </div>
                         </div>
+                    </form>
+
+                    <!-- Error display -->
+                    <div id="formError" class="form-error" style="display: none;"></div>
+
+                    <div class="guarantee-note">
+                        <span>🛡️</span> 30-Day Money-Back Guarantee · Secure Stripe Checkout
                     </div>
                 </div>
             </div>
@@ -1959,11 +2231,8 @@
         // Global state
         let selectedTier = 'complete';
         let selectedPrice = 79;
-        let uploadedImage = null;
-        let cardElement = null;
-        const stripe = Stripe('pk_test_51234567890abcdef');
-        const elements = stripe.elements();
-        
+        let currentStep = 1;
+
         // Simplicity toggle state
         let simplicityMode = false;
         let userBehavior = {
@@ -1975,13 +2244,6 @@
             lastScrollY: 0
         };
         let toggleSuggested = false;
-
-        // Set minimum date for consultation
-        if (document.getElementById('consultDate')) {
-            const today = new Date();
-            today.setDate(today.getDate() + 1);
-            document.getElementById('consultDate').min = today.toISOString().split('T')[0];
-        }
         
         // Simplicity Toggle Functions
         function toggleSimplicity() {
@@ -2120,38 +2382,142 @@
         function selectTier(tier, price) {
             selectedTier = tier;
             selectedPrice = price;
-            
+
             const tierNames = {
                 'basic': 'Basic Plan',
                 'complete': 'Complete Plan',
                 'concierge': 'Concierge Plan'
             };
-            
+
             const tierDescriptions = {
                 'basic': 'Single-phase recommendation with safety guidelines',
                 'complete': 'Full 3-phase protocol with implementation guide',
                 'concierge': 'Complete protocol + 15-min consultation + support'
             };
-            
+
             document.getElementById('selectedTierName').textContent = tierNames[tier];
-            document.getElementById('selectedTierName').nextElementSibling.textContent = tierDescriptions[tier];
+            document.getElementById('selectedTierDesc').textContent = tierDescriptions[tier];
             document.getElementById('selectedTierPrice').textContent = '$' + price;
-            
+
+            // Reset form state
+            currentStep = 1;
+            document.getElementById('questionStep1').style.display = 'block';
+            document.getElementById('questionStep2').style.display = 'none';
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step1').classList.remove('completed');
+            document.getElementById('step2').classList.remove('active', 'completed');
+            document.getElementById('step3').classList.remove('active');
+
             document.getElementById('uploadSection').classList.add('active');
             document.getElementById('uploadSection').scrollIntoView({ behavior: 'smooth' });
-            
-            // Show consultation scheduler for concierge
-            if (tier === 'concierge') {
-                document.getElementById('consultationSection').style.display = 'block';
-            } else {
-                document.getElementById('consultationSection').style.display = 'none';
-            }
-            
-            setTimeout(() => initializeStripe(), 500);
         }
 
         function scrollToPricing() {
             document.getElementById('pricingSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Questionnaire navigation
+        function nextStep(fromStep) {
+            if (fromStep === 1) {
+                // Validate step 1
+                const primaryGoal = document.querySelector('input[name="primaryGoal"]:checked');
+                if (!primaryGoal) {
+                    showError('Please select your primary goal');
+                    return;
+                }
+
+                // Update step indicators
+                document.getElementById('step1').classList.remove('active');
+                document.getElementById('step1').classList.add('completed');
+                document.getElementById('step2').classList.add('active');
+
+                // Show step 2
+                document.getElementById('questionStep1').style.display = 'none';
+                document.getElementById('questionStep2').style.display = 'block';
+                currentStep = 2;
+
+                // Scroll to top of form
+                document.getElementById('uploadSection').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function prevStep(fromStep) {
+            if (fromStep === 2) {
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step1').classList.remove('completed');
+                document.getElementById('step1').classList.add('active');
+
+                document.getElementById('questionStep2').style.display = 'none';
+                document.getElementById('questionStep1').style.display = 'block';
+                currentStep = 1;
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('formError');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        async function submitQuestionnaire() {
+            // Validate step 2
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
+
+            if (!email) {
+                showError('Please enter your email address');
+                return;
+            }
+
+            if (!age || age < 18) {
+                showError('Please enter a valid age (18+)');
+                return;
+            }
+
+            // Collect all answers
+            const answers = {
+                primaryGoal: document.querySelector('input[name="primaryGoal"]:checked')?.value,
+                age: parseInt(age),
+                weight: parseInt(document.getElementById('weight').value) || null,
+                experience: document.getElementById('experience').value,
+                injectionComfort: document.getElementById('injectionComfort').value,
+                conditions: Array.from(document.querySelectorAll('input[name="conditions"]:checked')).map(c => c.value)
+            };
+
+            // Show loading state
+            document.getElementById('checkoutBtnText').style.display = 'none';
+            document.getElementById('checkoutBtnLoading').style.display = 'inline';
+
+            try {
+                const response = await fetch('/api/create-checkout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        tier: selectedTier,
+                        email: email,
+                        answers: answers
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.url) {
+                    // Redirect to Stripe Checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error(data.error || 'Failed to create checkout session');
+                }
+            } catch (error) {
+                console.error('Checkout error:', error);
+                showError('Something went wrong. Please try again.');
+                document.getElementById('checkoutBtnText').style.display = 'inline';
+                document.getElementById('checkoutBtnLoading').style.display = 'none';
+            }
         }
 
         // Nurse modal functions
@@ -2179,121 +2545,23 @@
             }
         });
 
-        // File upload
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-            if (file && file.type.startsWith('image/')) {
-                uploadedImage = file;
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('previewImage').src = e.target.result;
-                    document.getElementById('previewImage').style.display = 'block';
-                    document.getElementById('uploadPrompt').style.display = 'none';
-                    document.getElementById('uploadArea').classList.add('has-image');
-                    
-                    document.getElementById('step1').classList.add('completed');
-                    document.getElementById('step2').classList.add('active');
-                    document.getElementById('paymentContainer').style.display = 'block';
-                    document.getElementById('paymentPrice').textContent = '$' + selectedPrice;
-                    
-                    setTimeout(() => {
-                        document.getElementById('paymentContainer').scrollIntoView({ 
-                            behavior: 'smooth', 
-                            block: 'nearest' 
-                        });
-                    }, 300);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-
-        // Stripe setup
-        function initializeStripe() {
-            if (!cardElement) {
-                cardElement = elements.create('card', {
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#1a1a2e',
-                            fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-                            '::placeholder': { color: '#999' }
-                        }
-                    }
-                });
-                cardElement.mount('#card-element');
-
-                cardElement.on('change', function(event) {
-                    const displayError = document.getElementById('card-errors');
-                    if (event.error) {
-                        displayError.textContent = event.error.message;
-                        document.getElementById('submitBtn').disabled = true;
-                    } else {
-                        displayError.textContent = '';
-                        document.getElementById('submitBtn').disabled = false;
-                    }
-                });
-            }
-        }
-
-        // Payment processing
-        async function processPayment() {
-            const btn = document.getElementById('submitBtn');
-            btn.disabled = true;
-            btn.textContent = '⏳ Processing Payment...';
-
-            setTimeout(() => {
-                document.getElementById('step2').classList.add('completed');
-                document.getElementById('step3').classList.add('active');
-                
-                document.getElementById('landingPage').style.display = 'none';
-                document.getElementById('resultsPage').classList.add('active');
-                window.scrollTo(0, 0);
-
-                // Adjust protocol based on tier
-                if (selectedTier === 'basic') {
-                    document.getElementById('protocolSummary').textContent = 'Single-Phase Protocol • 6 Week Timeline';
-                    const phases = document.getElementById('protocolPhases');
-                    while (phases.children.length > 1) {
-                        phases.removeChild(phases.lastChild);
-                    }
-                }
-
-                setTimeout(() => {
-                    document.getElementById('loadingState').style.display = 'none';
-                    document.getElementById('resultsContent').classList.add('show');
-                }, 3500);
-
-                btn.disabled = false;
-                btn.textContent = '🔒 Get My Protocol';
-            }, 2000);
-        }
-
-        // Reset
+        // Reset to landing page
         function resetToLanding() {
-            document.getElementById('resultsPage').classList.remove('active');
-            document.getElementById('landingPage').style.display = 'block';
-            document.getElementById('uploadSection').classList.remove('active');
-            
-            uploadedImage = null;
-            document.getElementById('previewImage').style.display = 'none';
-            document.getElementById('uploadPrompt').style.display = 'block';
-            document.getElementById('uploadArea').classList.remove('has-image');
-            document.getElementById('paymentContainer').style.display = 'none';
-            document.getElementById('fileInput').value = '';
-            
-            document.getElementById('step1').classList.remove('completed');
-            document.getElementById('step2').classList.remove('active', 'completed');
-            document.getElementById('step3').classList.remove('active');
-            
-            document.getElementById('loadingState').style.display = 'block';
-            document.getElementById('resultsContent').classList.remove('show');
-            
-            if (cardElement) {
-                cardElement.clear();
-            }
-
-            window.scrollTo(0, 0);
+            window.location.href = '/';
         }
     </script>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a2e; color: white; padding: 40px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <p style="margin-bottom: 20px; opacity: 0.9;">PeptideStack provides educational information only. Always consult a healthcare provider before starting any protocol.</p>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <a href="/terms.html" style="color: #00d4ff; text-decoration: none;">Terms of Service</a>
+                <a href="/privacy.html" style="color: #00d4ff; text-decoration: none;">Privacy Policy</a>
+                <a href="mailto:support@peptidestack.com" style="color: #00d4ff; text-decoration: none;">Contact</a>
+            </div>
+            <p style="margin-top: 25px; opacity: 0.6; font-size: 0.9em;">&copy; 2025 PeptideStack. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
