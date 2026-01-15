@@ -25,8 +25,22 @@
         .hero-cta:hover { background: #00cc6a; box-shadow: 0 0 40px rgba(0, 255, 136, 0.4); }
         .subtext { margin-top: 15px; font-size: 0.8em; color: #333; }
 
+        /* New to Peptides */
+        .newbie-section { padding: 50px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .newbie-toggle { text-align: center; margin-bottom: 20px; }
+        .newbie-toggle button { background: transparent; border: 1px solid #222; color: #666; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-size: 0.8em; }
+        .newbie-toggle button:hover { border-color: #00ff88; color: #00ff88; }
+        .newbie-content { display: none; max-width: 700px; margin: 0 auto; }
+        .newbie-content.active { display: block; }
+        .newbie-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 25px; }
+        .newbie-card h3 { color: #00ff88; font-size: 1em; margin-bottom: 15px; }
+        .newbie-card p { color: #888; font-size: 0.9em; line-height: 1.8; margin-bottom: 15px; }
+        .newbie-card ul { list-style: none; margin-top: 15px; }
+        .newbie-card li { padding: 8px 0; color: #666; font-size: 0.85em; display: flex; gap: 10px; }
+        .newbie-card li::before { content: '→'; color: #00ff88; }
+
         /* Tier List */
-        .tier-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .tier-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
         .section-title { text-align: center; margin-bottom: 15px; }
         .section-title h2 { font-size: 1.6em; color: #fff; margin-bottom: 8px; }
         .section-title p { color: #444; font-size: 0.9em; }
@@ -43,6 +57,16 @@
         .tier-f .tier-item { color: #555; text-decoration: line-through; }
         .tier-note { text-align: center; margin-top: 25px; color: #333; font-size: 0.8em; }
 
+        /* Science */
+        .science-section { padding: 50px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .science-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 700px; margin: 30px auto 0; }
+        .science-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 6px; padding: 20px; text-align: center; }
+        .science-card .sci-stat { font-size: 1.8em; font-weight: 700; color: #00ff88; }
+        .science-card .sci-label { font-size: 0.75em; color: #666; margin: 5px 0 10px; }
+        .science-card .sci-source { font-size: 0.65em; color: #333; }
+        .science-card a { color: #444; text-decoration: none; }
+        .science-card a:hover { color: #00ff88; }
+
         /* Cope Section */
         .cope-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
         .cope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
@@ -57,8 +81,20 @@
         .cope-card.bad li::before { content: '✗'; color: #ff4444; }
         .cope-card.good li::before { content: '✓'; color: #00ff88; }
 
+        /* Budget ROI */
+        .budget-section { padding: 50px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .budget-card { max-width: 600px; margin: 0 auto; background: #0a1a0f; border: 1px solid #00ff88; border-radius: 8px; padding: 25px; }
+        .budget-card h3 { color: #00ff88; font-size: 0.9em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; text-align: center; }
+        .budget-table { width: 100%; }
+        .budget-table th, .budget-table td { padding: 10px; text-align: left; font-size: 0.85em; }
+        .budget-table th { color: #666; font-weight: 600; border-bottom: 1px solid #1a1a1a; }
+        .budget-table td { color: #888; }
+        .budget-table .compound { color: #fff; }
+        .budget-table .best-value { background: #0d1a12; }
+        .budget-table .best-value td { color: #00ff88; }
+
         /* Stacks */
-        .stacks-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .stacks-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
         .stacks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
         .stack-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 25px; }
         .stack-card h3 { color: #00ff88; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
@@ -67,6 +103,16 @@
         .stack-card li { padding: 6px 0; font-size: 0.85em; color: #888; }
         .stack-card li strong { color: #fff; }
         .stack-timeline { background: #111; padding: 10px 12px; border-radius: 4px; font-size: 0.8em; color: #00ff88; }
+        .stack-card .stack-cost { margin-top: 10px; font-size: 0.75em; color: #444; }
+
+        /* Post-Procedure */
+        .procedure-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .procedure-card { max-width: 700px; margin: 30px auto 0; background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 30px; }
+        .procedure-card h3 { color: #00ff88; font-size: 1em; margin-bottom: 20px; }
+        .procedure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .procedure-item h4 { color: #fff; font-size: 0.85em; margin-bottom: 8px; }
+        .procedure-item p { color: #666; font-size: 0.8em; line-height: 1.7; }
+        .procedure-item .timeline { color: #00ff88; font-size: 0.75em; margin-top: 8px; }
 
         /* Results */
         .results-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
@@ -82,8 +128,19 @@
         .result-author { color: #00ff88; font-weight: 600; font-size: 0.85em; }
         .result-tag { background: #111; border: 1px solid #222; padding: 4px 10px; border-radius: 4px; font-size: 0.7em; color: #555; }
 
+        /* Already Running */
+        .advanced-section { padding: 50px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .advanced-card { max-width: 600px; margin: 0 auto; background: #0a0a0a; border: 1px solid #222; border-radius: 8px; padding: 25px; text-align: center; }
+        .advanced-card h3 { color: #fff; font-size: 1em; margin-bottom: 10px; }
+        .advanced-card p { color: #666; font-size: 0.85em; margin-bottom: 20px; }
+        .advanced-card ul { list-style: none; text-align: left; margin-bottom: 20px; }
+        .advanced-card li { padding: 6px 0; color: #888; font-size: 0.85em; }
+        .advanced-card li::before { content: '→'; color: #00ff88; margin-right: 10px; }
+        .advanced-cta { background: transparent; border: 1px solid #00ff88; color: #00ff88; padding: 12px 25px; border-radius: 4px; cursor: pointer; font-size: 0.85em; text-transform: uppercase; letter-spacing: 1px; }
+        .advanced-cta:hover { background: #00ff88; color: #050505; }
+
         /* Pricing */
-        .pricing-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .pricing-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 700px; margin: 40px auto 0; }
         .pricing-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 30px; text-align: center; position: relative; }
         .pricing-card.featured { border-color: #00ff88; background: linear-gradient(180deg, #0a1a0f 0%, #0a0a0a 100%); }
@@ -99,6 +156,12 @@
         .pricing-cta:hover { background: #00ff88; color: #050505; }
         .pricing-card.featured .pricing-cta { background: #00ff88; color: #050505; }
 
+        /* Share */
+        .share-section { padding: 40px 20px; background: #080808; border-bottom: 1px solid #111; text-align: center; }
+        .share-section p { color: #444; font-size: 0.85em; margin-bottom: 15px; }
+        .share-btn { background: transparent; border: 1px solid #222; color: #666; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 0.8em; margin: 0 5px; }
+        .share-btn:hover { border-color: #00ff88; color: #00ff88; }
+
         /* FAQ */
         .faq-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
         .faq-list { max-width: 700px; margin: 40px auto 0; }
@@ -106,6 +169,7 @@
         .faq-q { color: #fff; font-size: 0.95em; margin-bottom: 10px; }
         .faq-a { color: #666; font-size: 0.85em; line-height: 1.8; }
         .faq-a span { color: #00ff88; }
+        .faq-a a { color: #00ff88; }
 
         /* Questionnaire */
         .upload-section { display: none; padding: 70px 20px; background: #050505; }
@@ -157,10 +221,11 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8em; }
-            .cope-grid { grid-template-columns: 1fr; }
+            .cope-grid, .procedure-grid { grid-template-columns: 1fr; }
             .pricing-grid, .stacks-grid { grid-template-columns: 1fr; }
             .form-grid { grid-template-columns: 1fr; }
             .result-stats { justify-content: space-between; }
+            .science-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -179,6 +244,61 @@
                 </div>
                 <button class="hero-cta" onclick="scrollToPricing()">Get My Protocol</button>
                 <div class="subtext">$49 one-time. Not monthly. Not a subscription. You own it.</div>
+            </div>
+        </div>
+
+        <!-- New to Peptides (Persona 1, 10) -->
+        <div class="newbie-section">
+            <div class="container">
+                <div class="newbie-toggle">
+                    <button onclick="toggleNewbie()">New to peptides? Click here for a quick explainer</button>
+                </div>
+                <div class="newbie-content" id="newbieContent">
+                    <div class="newbie-card">
+                        <h3>What are peptides? (30 second version)</h3>
+                        <p><strong>Peptides are short chains of amino acids</strong> - basically small proteins that signal your body to do specific things. They're not steroids. They work with your body's natural processes.</p>
+                        <p>Different peptides do different things:</p>
+                        <ul>
+                            <li><strong>GHK-Cu</strong> - Signals your body to produce more collagen (skin, healing)</li>
+                            <li><strong>BPC-157</strong> - Accelerates tissue repair and healing</li>
+                            <li><strong>CJC-1295/Ipamorelin</strong> - Tells your body to release more growth hormone naturally</li>
+                            <li><strong>GLP-1s (Semaglutide, etc.)</strong> - Regulate appetite and metabolism for fat loss</li>
+                        </ul>
+                        <p style="color: #666; font-size: 0.85em; margin-top: 15px;">They're injected subcutaneously (under the skin, like insulin). The protocol tells you exactly how to do this safely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Science Citations (Persona 6, 9) -->
+        <div class="science-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>The Data Behind the Claims</h2>
+                    <p>Not broscience. Actual studies.</p>
+                </div>
+                <div class="science-grid">
+                    <div class="science-card">
+                        <div class="sci-stat">+70%</div>
+                        <div class="sci-label">Collagen Synthesis (GHK-Cu)</div>
+                        <div class="sci-source"><a href="https://pubmed.ncbi.nlm.nih.gov/29658657/" target="_blank">PMC 2018 →</a></div>
+                    </div>
+                    <div class="science-card">
+                        <div class="sci-stat">2-4x</div>
+                        <div class="sci-label">Faster Healing (BPC-157)</div>
+                        <div class="sci-source"><a href="https://pubmed.ncbi.nlm.nih.gov/28778332/" target="_blank">J Physiol 2017 →</a></div>
+                    </div>
+                    <div class="science-card">
+                        <div class="sci-stat">+15%</div>
+                        <div class="sci-label">GH Levels (CJC/Ipa)</div>
+                        <div class="sci-source"><a href="https://pubmed.ncbi.nlm.nih.gov/17018659/" target="_blank">JCEM 2006 →</a></div>
+                    </div>
+                    <div class="science-card">
+                        <div class="sci-stat">-15%</div>
+                        <div class="sci-label">Body Weight (GLP-1s)</div>
+                        <div class="sci-source"><a href="https://pubmed.ncbi.nlm.nih.gov/33567185/" target="_blank">NEJM 2021 →</a></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -229,11 +349,52 @@
                             <div class="tier-item">CJC no DAC</div>
                             <div class="tier-item">GHRPs</div>
                             <div class="tier-item">IGF1-LR3</div>
-                            <div class="tier-item">Most "stacks" vendors sell</div>
+                            <div class="tier-item">Most vendor "stacks"</div>
                         </div>
                     </div>
                 </div>
                 <p class="tier-note">Your protocol only includes S/A/B tier compounds. No cope.</p>
+            </div>
+        </div>
+
+        <!-- Budget ROI (Persona 7) -->
+        <div class="budget-section">
+            <div class="container">
+                <div class="budget-card">
+                    <h3>Best ROI by Goal (If You're on a Budget)</h3>
+                    <table class="budget-table">
+                        <tr>
+                            <th>Goal</th>
+                            <th>Best Compound</th>
+                            <th>~Cost/Month</th>
+                            <th>ROI</th>
+                        </tr>
+                        <tr class="best-value">
+                            <td>Skin/Collagen</td>
+                            <td class="compound">GHK-Cu</td>
+                            <td>$40-60</td>
+                            <td>Best entry point</td>
+                        </tr>
+                        <tr>
+                            <td>Healing</td>
+                            <td class="compound">BPC-157</td>
+                            <td>$50-80</td>
+                            <td>High if injured</td>
+                        </tr>
+                        <tr>
+                            <td>GH/Sleep</td>
+                            <td class="compound">CJC+Ipa</td>
+                            <td>$80-120</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>Fat Loss</td>
+                            <td class="compound">Semaglutide</td>
+                            <td>$150-300</td>
+                            <td>High if 20%+ BF</td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -290,6 +451,7 @@
                             <li><strong>Protocol:</strong> GHK-Cu AM, BPC-157 PM</li>
                         </ul>
                         <div class="stack-timeline">Results: 2-4 weeks for skin, 6-8 weeks full effect</div>
+                        <div class="stack-cost">Compound cost: ~$80-120/month</div>
                     </div>
                     <div class="stack-card">
                         <h3>GH Optimization Stack</h3>
@@ -300,6 +462,7 @@
                             <li><strong>Protocol:</strong> CJC 2x/week, Ipa daily</li>
                         </ul>
                         <div class="stack-timeline">Results: Sleep week 1, body comp 4-8 weeks</div>
+                        <div class="stack-cost">Compound cost: ~$100-150/month</div>
                     </div>
                     <div class="stack-card">
                         <h3>Leanmaxx Stack</h3>
@@ -310,6 +473,42 @@
                             <li><strong>Protocol:</strong> GLP-1 weekly, GHK daily</li>
                         </ul>
                         <div class="stack-timeline">Results: 2-3 months for hollow cheeks</div>
+                        <div class="stack-cost">Compound cost: ~$200-350/month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Post-Procedure (Persona 3) -->
+        <div class="procedure-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Post-Procedure Protocols</h2>
+                    <p>Rhinoplasty, implants, dermarolling, or other procedures? We have specific stacks.</p>
+                </div>
+                <div class="procedure-card">
+                    <h3>Healing Protocol Breakdown</h3>
+                    <div class="procedure-grid">
+                        <div class="procedure-item">
+                            <h4>Post-Rhinoplasty / Implants</h4>
+                            <p>BPC-157 + TB-500 sequenced. Start BPC day 3-5 post-op (after initial inflammation subsides). Add TB-500 week 2. Supports tissue remodeling and reduces recovery time.</p>
+                            <div class="timeline">Typical timeline: 4-6 weeks accelerated recovery</div>
+                        </div>
+                        <div class="procedure-item">
+                            <h4>Post-Dermaroll / Microneedling</h4>
+                            <p>GHK-Cu primary, BPC-157 support. Apply GHK-Cu 12-24hrs post-procedure. Maximizes collagen response during healing window. Significantly better results than procedure alone.</p>
+                            <div class="timeline">Typical timeline: 2x faster healing, enhanced results</div>
+                        </div>
+                        <div class="procedure-item">
+                            <h4>General Surgery Recovery</h4>
+                            <p>BPC-157 systemic + localized. Oral and injectable protocols available. Supports wound healing, reduces scarring, accelerates return to normal.</p>
+                            <div class="timeline">Typical timeline: 30-50% faster recovery</div>
+                        </div>
+                        <div class="procedure-item">
+                            <h4>Safety Notes</h4>
+                            <p>Always wait for initial inflammation phase. Don't start peptides same-day as procedure. Protocol includes exact timing based on procedure type. Safe with most post-op medications.</p>
+                            <div class="timeline">Protocol includes: medication interaction check</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -358,10 +557,27 @@
                         </div>
                         <p class="result-quote">"<span>Retatrutide changed everything.</span> The hollow cheek meme is real if you actually get lean enough. Protocol had proper titration so no sides. Combined with GHK for skin tightening as I lost weight. <span>Legit ascension.</span>"</p>
                         <div class="result-meta">
-                            <span class="result-author">@retardtrutide_enjoyer, 21</span>
+                            <span class="result-author">@reta_enjoyer, 21</span>
                             <span class="result-tag">Leanmaxx Protocol</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Already Running (Persona 8) -->
+        <div class="advanced-section">
+            <div class="container">
+                <div class="advanced-card">
+                    <h3>Already Running Peptides?</h3>
+                    <p>If you're experienced but want optimization, the Full Stack protocol includes:</p>
+                    <ul>
+                        <li>Stacking multiple protocols safely (e.g., GH stack + skin stack)</li>
+                        <li>Sequencing for advanced users (what to add, when)</li>
+                        <li>Bloodwork markers to track and when to get them</li>
+                        <li>Diminishing returns analysis (when to stop/cycle)</li>
+                    </ul>
+                    <button class="advanced-cta" onclick="selectTier('complete', 79)">Get Advanced Protocol</button>
                 </div>
             </div>
         </div>
@@ -404,6 +620,15 @@
             </div>
         </div>
 
+        <!-- Share (Persona 2) -->
+        <div class="share-section">
+            <div class="container">
+                <p>Know someone wasting money on cope? Share this.</p>
+                <button class="share-btn" onclick="copyLink()">Copy Link</button>
+                <button class="share-btn" onclick="shareTwitter()">Share on X</button>
+            </div>
+        </div>
+
         <!-- FAQ -->
         <div class="faq-section">
             <div class="container">
@@ -418,6 +643,10 @@
                     <div class="faq-item">
                         <div class="faq-q">Why should I trust you?</div>
                         <div class="faq-a">I don't sell peptides. I have no inventory to move. My only incentive is giving you something that works so you tell others. I've spent 2 years in the community, tried most of these compounds myself, and read the actual studies. I'm also <span>honest about what doesn't work</span> - which vendors never are.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">Where do I actually buy the peptides?</div>
+                        <div class="faq-a">The protocol includes a <span>vendor tier list</span> with tested sources. I rank them by: 3rd party testing availability, community reputation, and price. You'll know exactly where to buy and what to avoid. I update this list regularly as vendors change.</div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-q">What if I already know what compounds I want?</div>
@@ -496,6 +725,22 @@
         let selectedTier = 'complete';
         let selectedPrice = 79;
         let currentStep = 1;
+
+        function toggleNewbie() {
+            const content = document.getElementById('newbieContent');
+            content.classList.toggle('active');
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert('Link copied!');
+        }
+
+        function shareTwitter() {
+            const text = encodeURIComponent("Stop wasting money on cope peptide protocols. This actually works:");
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
 
         function selectTier(tier, price) {
             selectedTier = tier;
