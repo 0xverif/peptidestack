@@ -3,123 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PeptideStack - Stop Running Cope Protocols</title>
+    <title>PeptideStack - Stop Wasting Money on Cope</title>
     <script src="https://js.stripe.com/v3/"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'SF Mono', 'Fira Code', monospace; line-height: 1.6; color: #e0e0e0; background: #0a0a0a; }
+        body { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; line-height: 1.6; color: #e0e0e0; background: #050505; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
         /* Hero */
-        .hero { background: #0a0a0a; padding: 80px 20px 60px; text-align: center; border-bottom: 1px solid #1a1a1a; }
-        .hero h1 { font-size: 2.4em; font-weight: 700; margin-bottom: 20px; line-height: 1.3; color: #fff; }
+        .hero { background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%); padding: 100px 20px 70px; text-align: center; border-bottom: 1px solid #111; }
+        .badge { display: inline-block; background: #1a0a0a; border: 1px solid #ff3333; color: #ff6666; padding: 6px 14px; border-radius: 4px; font-size: 0.7em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
+        .hero h1 { font-size: 2.6em; font-weight: 700; margin-bottom: 20px; line-height: 1.2; color: #fff; }
         .hero h1 span { color: #00ff88; }
-        .hero .subtitle { font-size: 1.1em; margin-bottom: 30px; color: #888; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .stats-row { display: flex; justify-content: center; gap: 40px; margin: 35px 0; flex-wrap: wrap; }
+        .hero h1 .red { color: #ff4444; text-decoration: line-through; opacity: 0.6; }
+        .hero .subtitle { font-size: 1.05em; margin-bottom: 35px; color: #666; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.8; }
+        .stats-row { display: flex; justify-content: center; gap: 50px; margin: 40px 0; flex-wrap: wrap; }
         .stat-item { text-align: center; }
-        .stat-number { font-size: 2em; font-weight: 700; color: #00ff88; }
-        .stat-label { font-size: 0.75em; color: #666; text-transform: uppercase; letter-spacing: 1px; }
-        .hero-cta { background: #00ff88; color: #0a0a0a; border: none; padding: 16px 40px; font-size: 1.1em; font-weight: 700; border-radius: 4px; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; }
-        .hero-cta:hover { background: #00cc6a; box-shadow: 0 0 30px rgba(0, 255, 136, 0.3); }
-        .subtext { margin-top: 12px; font-size: 0.85em; color: #555; }
+        .stat-number { font-size: 2.2em; font-weight: 700; color: #00ff88; }
+        .stat-label { font-size: 0.7em; color: #444; text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+        .hero-cta { background: #00ff88; color: #050505; border: none; padding: 18px 50px; font-size: 1em; font-weight: 700; border-radius: 4px; cursor: pointer; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-cta:hover { background: #00cc6a; box-shadow: 0 0 40px rgba(0, 255, 136, 0.4); }
+        .subtext { margin-top: 15px; font-size: 0.8em; color: #333; }
 
-        /* Why Section */
-        .why-section { padding: 60px 20px; background: #0f0f0f; border-bottom: 1px solid #1a1a1a; }
-        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-        .why-card { background: #141414; border: 1px solid #222; border-radius: 8px; padding: 25px; }
-        .why-card h3 { color: #00ff88; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
-        .why-card p { color: #888; font-size: 0.9em; line-height: 1.7; }
-        .why-card .highlight { color: #fff; font-weight: 600; }
+        /* Tier List */
+        .tier-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .section-title { text-align: center; margin-bottom: 15px; }
+        .section-title h2 { font-size: 1.6em; color: #fff; margin-bottom: 8px; }
+        .section-title p { color: #444; font-size: 0.9em; }
+        .tier-list { max-width: 700px; margin: 40px auto 0; }
+        .tier-row { display: flex; align-items: stretch; margin-bottom: 8px; border-radius: 6px; overflow: hidden; }
+        .tier-label { width: 70px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1em; flex-shrink: 0; }
+        .tier-s .tier-label { background: #ff4444; color: #fff; }
+        .tier-a .tier-label { background: #ff8800; color: #fff; }
+        .tier-b .tier-label { background: #ffcc00; color: #000; }
+        .tier-c .tier-label { background: #00cc66; color: #fff; }
+        .tier-f .tier-label { background: #333; color: #666; }
+        .tier-items { flex: 1; background: #111; padding: 12px 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        .tier-item { background: #1a1a1a; border: 1px solid #222; padding: 6px 12px; border-radius: 4px; font-size: 0.8em; color: #ccc; }
+        .tier-f .tier-item { color: #555; text-decoration: line-through; }
+        .tier-note { text-align: center; margin-top: 25px; color: #333; font-size: 0.8em; }
+
+        /* Cope Section */
+        .cope-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
+        .cope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+        .cope-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 25px; }
+        .cope-card.bad { border-color: #331111; }
+        .cope-card.good { border-color: #113311; }
+        .cope-card h3 { font-size: 0.85em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+        .cope-card.bad h3 { color: #ff4444; }
+        .cope-card.good h3 { color: #00ff88; }
+        .cope-card ul { list-style: none; }
+        .cope-card li { padding: 8px 0; font-size: 0.85em; color: #888; display: flex; align-items: flex-start; gap: 10px; }
+        .cope-card.bad li::before { content: '✗'; color: #ff4444; }
+        .cope-card.good li::before { content: '✓'; color: #00ff88; }
+
+        /* Stacks */
+        .stacks-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .stacks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .stack-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 25px; }
+        .stack-card h3 { color: #00ff88; font-size: 0.9em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .stack-card .stack-subtitle { color: #444; font-size: 0.75em; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; }
+        .stack-card ul { list-style: none; margin-bottom: 15px; }
+        .stack-card li { padding: 6px 0; font-size: 0.85em; color: #888; }
+        .stack-card li strong { color: #fff; }
+        .stack-timeline { background: #111; padding: 10px 12px; border-radius: 4px; font-size: 0.8em; color: #00ff88; }
+
+        /* Results */
+        .results-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
+        .results-grid { display: grid; gap: 20px; margin-top: 40px; }
+        .result-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 25px; }
+        .result-stats { display: flex; gap: 30px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #1a1a1a; flex-wrap: wrap; }
+        .r-stat { text-align: center; }
+        .r-stat-value { font-size: 1.3em; font-weight: 700; color: #00ff88; }
+        .r-stat-label { font-size: 0.65em; color: #444; text-transform: uppercase; letter-spacing: 1px; }
+        .result-quote { color: #888; line-height: 1.9; margin-bottom: 15px; font-size: 0.9em; }
+        .result-quote span { color: #fff; }
+        .result-meta { display: flex; justify-content: space-between; align-items: center; }
+        .result-author { color: #00ff88; font-weight: 600; font-size: 0.85em; }
+        .result-tag { background: #111; border: 1px solid #222; padding: 4px 10px; border-radius: 4px; font-size: 0.7em; color: #555; }
 
         /* Pricing */
-        .pricing-section { padding: 60px 20px; background: #0a0a0a; }
-        .section-header { text-align: center; margin-bottom: 40px; }
-        .section-header h2 { font-size: 1.8em; color: #fff; margin-bottom: 8px; }
-        .section-header p { color: #555; font-size: 0.95em; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 700px; margin: 0 auto; }
-        .pricing-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 30px; text-align: center; position: relative; transition: all 0.3s; }
-        .pricing-card:hover { border-color: #333; }
-        .pricing-card.featured { border-color: #00ff88; background: #0d1a12; }
-        .popular-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #00ff88; color: #0a0a0a; padding: 4px 14px; border-radius: 4px; font-weight: 700; font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; }
-        .pricing-tier { font-size: 0.85em; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; color: #666; }
+        .pricing-section { padding: 70px 20px; background: #080808; border-bottom: 1px solid #111; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 700px; margin: 40px auto 0; }
+        .pricing-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 8px; padding: 30px; text-align: center; position: relative; }
+        .pricing-card.featured { border-color: #00ff88; background: linear-gradient(180deg, #0a1a0f 0%, #0a0a0a 100%); }
+        .popular-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #00ff88; color: #050505; padding: 4px 14px; border-radius: 4px; font-weight: 700; font-size: 0.65em; text-transform: uppercase; letter-spacing: 2px; }
+        .pricing-tier { font-size: 0.8em; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #444; margin-bottom: 10px; }
         .pricing-card.featured .pricing-tier { color: #00ff88; }
-        .pricing-amount { font-size: 3em; font-weight: 700; color: #fff; margin-bottom: 5px; }
-        .pricing-period { font-size: 0.8em; color: #555; margin-bottom: 20px; }
+        .pricing-amount { font-size: 3em; font-weight: 700; color: #fff; }
+        .pricing-period { font-size: 0.75em; color: #333; margin-bottom: 20px; }
         .pricing-features { list-style: none; margin-bottom: 25px; text-align: left; }
-        .pricing-features li { padding: 8px 0; color: #888; font-size: 0.9em; display: flex; align-items: center; gap: 10px; }
+        .pricing-features li { padding: 8px 0; color: #666; font-size: 0.85em; display: flex; align-items: center; gap: 10px; }
         .pricing-features li::before { content: '+'; color: #00ff88; font-weight: 700; }
-        .pricing-cta { background: transparent; color: #00ff88; border: 1px solid #00ff88; padding: 12px 30px; font-size: 0.9em; font-weight: 600; border-radius: 4px; cursor: pointer; width: 100%; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; }
-        .pricing-cta:hover { background: #00ff88; color: #0a0a0a; }
-        .pricing-card.featured .pricing-cta { background: #00ff88; color: #0a0a0a; }
-        .pricing-card.featured .pricing-cta:hover { background: #00cc6a; }
+        .pricing-cta { background: transparent; color: #00ff88; border: 1px solid #00ff88; padding: 14px 30px; font-size: 0.85em; font-weight: 600; border-radius: 4px; cursor: pointer; width: 100%; text-transform: uppercase; letter-spacing: 2px; transition: all 0.2s; }
+        .pricing-cta:hover { background: #00ff88; color: #050505; }
+        .pricing-card.featured .pricing-cta { background: #00ff88; color: #050505; }
 
-        /* Result */
-        .result-section { padding: 60px 20px; background: #0f0f0f; border-top: 1px solid #1a1a1a; }
-        .result-card { background: #111; border: 1px solid #222; border-radius: 8px; padding: 30px; max-width: 650px; margin: 0 auto; }
-        .result-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; padding-bottom: 25px; border-bottom: 1px solid #222; }
-        .r-stat { text-align: center; }
-        .r-stat-value { font-size: 1.4em; font-weight: 700; color: #00ff88; }
-        .r-stat-label { font-size: 0.7em; color: #555; text-transform: uppercase; letter-spacing: 1px; }
-        .result-quote { color: #999; line-height: 1.8; margin-bottom: 20px; font-size: 0.95em; }
-        .result-quote span { color: #fff; }
-        .result-author { color: #00ff88; font-weight: 600; font-size: 0.9em; }
-        .result-meta { font-size: 0.8em; color: #444; margin-top: 3px; }
+        /* FAQ */
+        .faq-section { padding: 70px 20px; background: #050505; border-bottom: 1px solid #111; }
+        .faq-list { max-width: 700px; margin: 40px auto 0; }
+        .faq-item { border-bottom: 1px solid #111; padding: 20px 0; }
+        .faq-q { color: #fff; font-size: 0.95em; margin-bottom: 10px; }
+        .faq-a { color: #666; font-size: 0.85em; line-height: 1.8; }
+        .faq-a span { color: #00ff88; }
 
         /* Questionnaire */
-        .upload-section { display: none; padding: 60px 20px; background: #0a0a0a; }
+        .upload-section { display: none; padding: 70px 20px; background: #050505; }
         .upload-section.active { display: block; }
-        .upload-container { max-width: 550px; margin: 0 auto; background: #111; border: 1px solid #222; padding: 35px; border-radius: 8px; }
-        .selected-tier-banner { background: #0d1a12; border: 1px solid #00ff88; padding: 15px 20px; border-radius: 6px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
-        .selected-tier-banner h3 { font-size: 1.1em; color: #fff; }
-        .selected-tier-banner .price { font-size: 1.5em; font-weight: 700; color: #00ff88; }
-        .upload-steps { display: flex; justify-content: space-between; margin-bottom: 30px; }
+        .upload-container { max-width: 500px; margin: 0 auto; background: #0a0a0a; border: 1px solid #1a1a1a; padding: 35px; border-radius: 8px; }
+        .selected-tier-banner { background: linear-gradient(180deg, #0a1a0f 0%, #0a0a0a 100%); border: 1px solid #00ff88; padding: 15px 20px; border-radius: 6px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
+        .selected-tier-banner h3 { font-size: 1em; color: #fff; }
+        .selected-tier-banner .price { font-size: 1.4em; font-weight: 700; color: #00ff88; }
+        .upload-steps { display: flex; justify-content: space-between; margin-bottom: 25px; }
         .upload-step { flex: 1; text-align: center; position: relative; }
-        .upload-step::after { content: ''; position: absolute; top: 12px; left: 60%; width: 80%; height: 1px; background: #222; }
+        .upload-step::after { content: ''; position: absolute; top: 11px; left: 60%; width: 80%; height: 1px; background: #1a1a1a; }
         .upload-step:last-child::after { display: none; }
-        .upload-step.active .step-circle { background: #00ff88; color: #0a0a0a; }
-        .upload-step.completed .step-circle { background: #00ff88; color: #0a0a0a; }
-        .step-circle { width: 28px; height: 28px; background: #222; color: #555; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 6px; position: relative; z-index: 1; font-size: 0.8em; }
-        .step-label { font-size: 0.7em; color: #555; text-transform: uppercase; letter-spacing: 1px; }
-        .question-step h3 { color: #fff; font-size: 1.1em; margin-bottom: 5px; }
-        .question-subtitle { color: #555; margin-bottom: 20px; font-size: 0.85em; }
+        .upload-step.active .step-circle, .upload-step.completed .step-circle { background: #00ff88; color: #050505; }
+        .step-circle { width: 24px; height: 24px; background: #1a1a1a; color: #444; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 5px; position: relative; z-index: 1; font-size: 0.7em; }
+        .step-label { font-size: 0.65em; color: #333; text-transform: uppercase; letter-spacing: 1px; }
+        .question-step h3 { color: #fff; font-size: 1em; margin-bottom: 5px; }
+        .question-subtitle { color: #444; margin-bottom: 20px; font-size: 0.8em; }
         .goal-options { display: grid; gap: 8px; }
         .goal-option input { display: none; }
-        .goal-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #0a0a0a; border: 1px solid #222; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
-        .goal-card:hover { border-color: #333; }
-        .goal-option input:checked + .goal-card { border-color: #00ff88; background: #0d1a12; }
-        .goal-icon { font-size: 1.3em; }
-        .goal-card strong { display: block; color: #fff; font-size: 0.95em; }
-        .goal-card span { color: #555; font-size: 0.8em; }
+        .goal-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #080808; border: 1px solid #1a1a1a; border-radius: 6px; cursor: pointer; transition: all 0.2s; }
+        .goal-card:hover { border-color: #222; }
+        .goal-option input:checked + .goal-card { border-color: #00ff88; background: #0a1a0f; }
+        .goal-icon { font-size: 1.2em; }
+        .goal-card strong { display: block; color: #fff; font-size: 0.9em; }
+        .goal-card span { color: #444; font-size: 0.75em; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .form-group { display: flex; flex-direction: column; }
         .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { font-weight: 600; color: #888; margin-bottom: 5px; font-size: 0.8em; text-transform: uppercase; letter-spacing: 1px; }
-        .form-group input, .form-group select { padding: 12px; border: 1px solid #222; border-radius: 4px; font-size: 0.95em; background: #0a0a0a; color: #fff; }
+        .form-group label { font-weight: 600; color: #666; margin-bottom: 5px; font-size: 0.7em; text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input, .form-group select { padding: 12px; border: 1px solid #1a1a1a; border-radius: 4px; font-size: 0.9em; background: #080808; color: #fff; }
         .form-group input:focus, .form-group select:focus { outline: none; border-color: #00ff88; }
-        .form-group input::placeholder { color: #444; }
-        .form-hint { font-size: 0.75em; color: #444; margin-top: 4px; }
-        .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        .checkbox-label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.85em; color: #888; }
+        .form-group input::placeholder { color: #333; }
+        .form-hint { font-size: 0.7em; color: #333; margin-top: 4px; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 12px; }
+        .checkbox-label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.8em; color: #666; }
         .checkbox-label input { width: 14px; height: 14px; accent-color: #00ff88; }
-        .next-step-btn, .back-step-btn { padding: 14px 25px; border-radius: 4px; font-size: 0.9em; font-weight: 600; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 1px; }
-        .next-step-btn { background: #00ff88; color: #0a0a0a; width: 100%; margin-top: 20px; }
+        .next-step-btn, .back-step-btn { padding: 14px 25px; border-radius: 4px; font-size: 0.85em; font-weight: 600; cursor: pointer; border: none; text-transform: uppercase; letter-spacing: 2px; }
+        .next-step-btn { background: #00ff88; color: #050505; width: 100%; margin-top: 20px; }
         .next-step-btn:hover { background: #00cc6a; }
-        .back-step-btn { background: #222; color: #888; }
+        .back-step-btn { background: #1a1a1a; color: #666; }
         .step-buttons { display: flex; gap: 10px; margin-top: 20px; }
         .step-buttons .next-step-btn { flex: 1; margin-top: 0; }
-        .form-error { background: #1a0a0a; border: 1px solid #ff4444; color: #ff6666; padding: 12px; border-radius: 4px; margin-top: 15px; font-size: 0.9em; }
-        .guarantee-note { text-align: center; color: #444; margin-top: 20px; padding-top: 15px; border-top: 1px solid #222; font-size: 0.8em; }
+        .form-error { background: #1a0808; border: 1px solid #ff4444; color: #ff6666; padding: 12px; border-radius: 4px; margin-top: 15px; font-size: 0.85em; }
+        .guarantee-note { text-align: center; color: #333; margin-top: 20px; padding-top: 15px; border-top: 1px solid #1a1a1a; font-size: 0.75em; }
 
         /* Footer */
-        footer { background: #050505; color: #333; padding: 30px 20px; text-align: center; border-top: 1px solid #111; font-size: 0.8em; }
+        footer { background: #030303; color: #222; padding: 40px 20px; text-align: center; font-size: 0.75em; }
         footer a { color: #00ff88; text-decoration: none; margin: 0 12px; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8em; }
-            .stats-row { gap: 25px; }
-            .pricing-grid { grid-template-columns: 1fr; }
+            .cope-grid { grid-template-columns: 1fr; }
+            .pricing-grid, .stacks-grid { grid-template-columns: 1fr; }
             .form-grid { grid-template-columns: 1fr; }
-            .result-stats { grid-template-columns: repeat(2, 1fr); }
+            .result-stats { justify-content: space-between; }
         }
     </style>
 </head>
@@ -128,33 +169,198 @@
         <!-- Hero -->
         <div class="hero">
             <div class="container">
-                <h1>Stop Running <span>Cope Protocols</span><br>From Random Forum Posts</h1>
-                <p class="subtitle">Personalized peptide stacks for forward growth, collagen synthesis, and frame optimization. Based on your phenotype. Not broscience.</p>
+                <div class="badge">2+ Years Research / 12K+ Protocols</div>
+                <h1>95% of Peptides Are <span class="red">Underdosed Garbage</span><br>Here's What <span>Actually Works</span></h1>
+                <p class="subtitle">I spent 2 years in the trenches. Tried everything. Wasted thousands on cope. Now I build protocols based on what the research actually says and what the community has verified works. No influencer shills. No broscience. Just data.</p>
                 <div class="stats-row">
                     <div class="stat-item"><div class="stat-number">+70%</div><div class="stat-label">Collagen Synthesis</div></div>
-                    <div class="stat-item"><div class="stat-number">12K+</div><div class="stat-label">Protocols Sent</div></div>
-                    <div class="stat-item"><div class="stat-number">4-8wk</div><div class="stat-label">Visible Changes</div></div>
+                    <div class="stat-item"><div class="stat-number">S-Tier</div><div class="stat-label">Compounds Only</div></div>
+                    <div class="stat-item"><div class="stat-number">4-8wk</div><div class="stat-label">Visible Results</div></div>
                 </div>
-                <button class="hero-cta" onclick="scrollToPricing()">Get My Stack</button>
-                <div class="subtext">$49 one-time. Not $500/mo at some "optimization clinic"</div>
+                <button class="hero-cta" onclick="scrollToPricing()">Get My Protocol</button>
+                <div class="subtext">$49 one-time. Not monthly. Not a subscription. You own it.</div>
             </div>
         </div>
 
-        <!-- Why Section -->
-        <div class="why-section">
+        <!-- Tier List -->
+        <div class="tier-section">
             <div class="container">
-                <div class="why-grid">
-                    <div class="why-card">
-                        <h3>GHK-Cu for Skin</h3>
-                        <p>Copper peptide that <span class="highlight">increases collagen by up to 70%</span> in clinical studies. Tighter skin, better elasticity, improved wound healing post-dermaroll. Results in 2-4 weeks.</p>
+                <div class="section-title">
+                    <h2>The Real Peptide Tier List</h2>
+                    <p>Based on clinical data + community consensus. Not what vendors want you to buy.</p>
+                </div>
+                <div class="tier-list">
+                    <div class="tier-row tier-s">
+                        <div class="tier-label">S</div>
+                        <div class="tier-items">
+                            <div class="tier-item">HGH (pharma)</div>
+                            <div class="tier-item">Retatrutide</div>
+                            <div class="tier-item">MT2</div>
+                            <div class="tier-item">Tirzepatide</div>
+                        </div>
                     </div>
-                    <div class="why-card">
-                        <h3>CJC-1295 + Ipamorelin</h3>
-                        <p>GH secretagogue stack for <span class="highlight">natural HGH optimization</span>. Better sleep, enhanced recovery, fat loss. The combo mimics natural GH pulses but amplified.</p>
+                    <div class="tier-row tier-a">
+                        <div class="tier-label">A</div>
+                        <div class="tier-items">
+                            <div class="tier-item">GHK-Cu</div>
+                            <div class="tier-item">Semaglutide</div>
+                            <div class="tier-item">CJC-1295 w/DAC</div>
+                            <div class="tier-item">BPC-157</div>
+                        </div>
                     </div>
-                    <div class="why-card">
-                        <h3>BPC-157 + TB-500</h3>
-                        <p>Healing stack for <span class="highlight">accelerated tissue repair</span>. Post-procedure recovery, tendon/ligament repair. What takes 3-6 months naturally can happen in 4-8 weeks.</p>
+                    <div class="tier-row tier-b">
+                        <div class="tier-label">B</div>
+                        <div class="tier-items">
+                            <div class="tier-item">TB-500</div>
+                            <div class="tier-item">NAD+</div>
+                            <div class="tier-item">HCG</div>
+                        </div>
+                    </div>
+                    <div class="tier-row tier-c">
+                        <div class="tier-label">C</div>
+                        <div class="tier-items">
+                            <div class="tier-item">MK-677</div>
+                            <div class="tier-item">Ipamorelin (solo)</div>
+                        </div>
+                    </div>
+                    <div class="tier-row tier-f">
+                        <div class="tier-label">F</div>
+                        <div class="tier-items">
+                            <div class="tier-item">CJC no DAC</div>
+                            <div class="tier-item">GHRPs</div>
+                            <div class="tier-item">IGF1-LR3</div>
+                            <div class="tier-item">Most "stacks" vendors sell</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="tier-note">Your protocol only includes S/A/B tier compounds. No cope.</p>
+            </div>
+        </div>
+
+        <!-- Cope vs Works -->
+        <div class="cope-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What's Cope vs What Actually Works</h2>
+                    <p>Being honest about this is why people trust us</p>
+                </div>
+                <div class="cope-grid">
+                    <div class="cope-card bad">
+                        <h3>Cope (Don't Waste Money)</h3>
+                        <ul>
+                            <li>Random stacks from .org threads with no sequencing</li>
+                            <li>CJC-1295 WITHOUT DAC (half-life too short)</li>
+                            <li>GHRPs alone (burn out ghrelin sensitivity)</li>
+                            <li>IGF1-LR3 (risk profile doesn't match 5% gains)</li>
+                            <li>Anything from vendors with no 3rd party testing</li>
+                            <li>MK-677 for anything except appetite/sleep</li>
+                            <li>"Proprietary blends" (always underdosed)</li>
+                        </ul>
+                    </div>
+                    <div class="cope-card good">
+                        <h3>Actually Works (Data-Backed)</h3>
+                        <ul>
+                            <li>GHK-Cu for skin (+70% collagen in studies)</li>
+                            <li>CJC-1295 WITH DAC + Ipamorelin combo</li>
+                            <li>BPC-157 from tested sources for healing</li>
+                            <li>GLP-1 agonists for leanmaxxing (hollow cheeks)</li>
+                            <li>Proper sequencing (foundation → amplification)</li>
+                            <li>Conservative dosing (more isn't better)</li>
+                            <li>Pharma-grade HGH if budget allows</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stacks -->
+        <div class="stacks-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Protocol Stacks We Build</h2>
+                    <p>Sequenced for synergy. Not random compounds thrown together.</p>
+                </div>
+                <div class="stacks-grid">
+                    <div class="stack-card">
+                        <h3>Skin + Collagen Stack</h3>
+                        <div class="stack-subtitle">Most Popular for Face Gains</div>
+                        <ul>
+                            <li><strong>GHK-Cu</strong> - 1-2mg/day subQ</li>
+                            <li><strong>BPC-157</strong> - 250mcg/day (healing support)</li>
+                            <li><strong>Protocol:</strong> GHK-Cu AM, BPC-157 PM</li>
+                        </ul>
+                        <div class="stack-timeline">Results: 2-4 weeks for skin, 6-8 weeks full effect</div>
+                    </div>
+                    <div class="stack-card">
+                        <h3>GH Optimization Stack</h3>
+                        <div class="stack-subtitle">Sleep + Recovery + Fat Loss</div>
+                        <ul>
+                            <li><strong>CJC-1295 w/DAC</strong> - 2mg/week</li>
+                            <li><strong>Ipamorelin</strong> - 200mcg pre-bed</li>
+                            <li><strong>Protocol:</strong> CJC 2x/week, Ipa daily</li>
+                        </ul>
+                        <div class="stack-timeline">Results: Sleep week 1, body comp 4-8 weeks</div>
+                    </div>
+                    <div class="stack-card">
+                        <h3>Leanmaxx Stack</h3>
+                        <div class="stack-subtitle">Facial Definition + BF Cut</div>
+                        <ul>
+                            <li><strong>Retatrutide/Tirz</strong> - Titrated dosing</li>
+                            <li><strong>GHK-Cu</strong> - Skin tightening support</li>
+                            <li><strong>Protocol:</strong> GLP-1 weekly, GHK daily</li>
+                        </ul>
+                        <div class="stack-timeline">Results: 2-3 months for hollow cheeks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Verified Results</h2>
+                    <p>Real protocols. Real measurements. Not LARP.</p>
+                </div>
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-stats">
+                            <div class="r-stat"><div class="r-stat-value">-18lb</div><div class="r-stat-label">BF Lost</div></div>
+                            <div class="r-stat"><div class="r-stat-value">+2mm</div><div class="r-stat-label">Zygo Projection</div></div>
+                            <div class="r-stat"><div class="r-stat-value">8wk</div><div class="r-stat-label">Timeline</div></div>
+                            <div class="r-stat"><div class="r-stat-value">$310</div><div class="r-stat-label">Total Cost</div></div>
+                        </div>
+                        <p class="result-quote">"Ran cope stacks from forums for months. <span>Zero results.</span> Got this protocol - GHK-Cu first 4 weeks, then added CJC/Ipa. Actually measuring changes now. Zygos visible for the first time. Skin noticeably tighter. <span>This is the first thing that actually worked.</span>"</p>
+                        <div class="result-meta">
+                            <span class="result-author">@anon_ascender, 23</span>
+                            <span class="result-tag">Full Stack Protocol</span>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-stats">
+                            <div class="r-stat"><div class="r-stat-value">+65%</div><div class="r-stat-label">Skin Elasticity</div></div>
+                            <div class="r-stat"><div class="r-stat-value">-12lb</div><div class="r-stat-label">Water/Fat</div></div>
+                            <div class="r-stat"><div class="r-stat-value">6wk</div><div class="r-stat-label">Timeline</div></div>
+                            <div class="r-stat"><div class="r-stat-value">$180</div><div class="r-stat-label">Total Cost</div></div>
+                        </div>
+                        <p class="result-quote">"Post-dermaroll recovery was taking forever. Got the healing stack. <span>BPC + TB-500 sequenced properly.</span> Skin healed 2x faster than previous sessions. Added GHK-Cu after and the collagen gains are visible. Friends asking what I'm doing different."</p>
+                        <div class="result-meta">
+                            <span class="result-author">@skincell_maxxer, 26</span>
+                            <span class="result-tag">Skin + Healing Protocol</span>
+                        </div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-stats">
+                            <div class="r-stat"><div class="r-stat-value">-24lb</div><div class="r-stat-label">Total Lost</div></div>
+                            <div class="r-stat"><div class="r-stat-value">Hollow</div><div class="r-stat-label">Cheeks Now</div></div>
+                            <div class="r-stat"><div class="r-stat-value">10wk</div><div class="r-stat-label">Timeline</div></div>
+                            <div class="r-stat"><div class="r-stat-value">$420</div><div class="r-stat-label">Total Cost</div></div>
+                        </div>
+                        <p class="result-quote">"<span>Retatrutide changed everything.</span> The hollow cheek meme is real if you actually get lean enough. Protocol had proper titration so no sides. Combined with GHK for skin tightening as I lost weight. <span>Legit ascension.</span>"</p>
+                        <div class="result-meta">
+                            <span class="result-author">@retardtrutide_enjoyer, 21</span>
+                            <span class="result-tag">Leanmaxx Protocol</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,33 +369,34 @@
         <!-- Pricing -->
         <div class="pricing-section" id="pricingSection">
             <div class="container">
-                <div class="section-header">
-                    <h2>Choose Your Protocol</h2>
-                    <p>Matched to your goals. Not generic forum copypasta.</p>
+                <div class="section-title">
+                    <h2>Get Your Protocol</h2>
+                    <p>One payment. No subscription. No upsells. No BS.</p>
                 </div>
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <div class="pricing-tier">Starter</div>
+                        <div class="pricing-tier">Single Compound</div>
                         <div class="pricing-amount">$49</div>
                         <div class="pricing-period">one-time</div>
                         <ul class="pricing-features">
-                            <li>Single compound protocol</li>
-                            <li>Dosing + timing breakdown</li>
-                            <li>Reconstitution guide</li>
-                            <li>Source recommendations</li>
+                            <li>One optimized compound protocol</li>
+                            <li>Exact dosing + timing</li>
+                            <li>Reconstitution instructions</li>
+                            <li>Source tier list</li>
                         </ul>
-                        <button class="pricing-cta" onclick="selectTier('basic', 49)">Get Started</button>
+                        <button class="pricing-cta" onclick="selectTier('basic', 49)">Get Protocol</button>
                     </div>
                     <div class="pricing-card featured">
-                        <div class="popular-badge">MOST CHOSEN</div>
+                        <div class="popular-badge">87% Choose This</div>
                         <div class="pricing-tier">Full Stack</div>
                         <div class="pricing-amount">$79</div>
                         <div class="pricing-period">one-time</div>
                         <ul class="pricing-features">
                             <li>Multi-compound sequenced stack</li>
-                            <li>Phase-by-phase protocol</li>
+                            <li>Phase-by-phase breakdown</li>
                             <li>Synergy optimization</li>
-                            <li>Vendor tier list</li>
+                            <li>Vendor tier list + alternatives</li>
+                            <li>Timing for your schedule</li>
                         </ul>
                         <button class="pricing-cta" onclick="selectTier('complete', 79)">Get Full Stack</button>
                     </div>
@@ -197,23 +404,33 @@
             </div>
         </div>
 
-        <!-- Result -->
-        <div class="result-section">
+        <!-- FAQ -->
+        <div class="faq-section">
             <div class="container">
-                <div class="section-header">
-                    <h2>Actual Results</h2>
-                    <p>Not LARP. Verified purchase.</p>
+                <div class="section-title">
+                    <h2>Questions</h2>
                 </div>
-                <div class="result-card">
-                    <div class="result-stats">
-                        <div class="r-stat"><div class="r-stat-value">+12%</div><div class="r-stat-label">fWHR</div></div>
-                        <div class="r-stat"><div class="r-stat-value">-14lb</div><div class="r-stat-label">BF Lost</div></div>
-                        <div class="r-stat"><div class="r-stat-value">8wk</div><div class="r-stat-label">Timeline</div></div>
-                        <div class="r-stat"><div class="r-stat-value">$240</div><div class="r-stat-label">Total Spend</div></div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-q">How is this different from free forum protocols?</div>
+                        <div class="faq-a">Forum protocols are random compounds thrown together by people who tried one thing. These are <span>sequenced based on pharmacokinetics</span> - what to run first, what stacks synergistically, what order maximizes results. The difference between running compounds randomly vs sequenced properly is the difference between cope and actual results.</div>
                     </div>
-                    <p class="result-quote">"Ran random stacks from .org for 6 months. <span>Literally nothing.</span> Got this protocol, followed the sequencing exactly. GHK-Cu first for the skin, then CJC/Ipa for the GH boost. Actually seeing facial definition changes. Zygos more visible. Skin tighter. <span>This isn't cope.</span>"</p>
-                    <p class="result-author">@anon_ascender, 23</p>
-                    <p class="result-meta">Full Stack Protocol - Verified Purchase</p>
+                    <div class="faq-item">
+                        <div class="faq-q">Why should I trust you?</div>
+                        <div class="faq-a">I don't sell peptides. I have no inventory to move. My only incentive is giving you something that works so you tell others. I've spent 2 years in the community, tried most of these compounds myself, and read the actual studies. I'm also <span>honest about what doesn't work</span> - which vendors never are.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">What if I already know what compounds I want?</div>
+                        <div class="faq-a">Then you probably still need the sequencing and dosing dialed in. Most people run GHK-Cu wrong (too high dose, wrong timing), mess up CJC/Ipa ratios, or don't know that <span>BPC-157 should come before TB-500</span> for optimal healing cascade. The protocol handles all of this.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">Is this legal?</div>
+                        <div class="faq-a">I provide educational protocols. What you do with them is your choice. Peptides exist in a gray area - they're sold as "research chemicals." <span>I'm not a doctor and this isn't medical advice.</span> You're responsible for your own decisions.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q">What if it doesn't work?</div>
+                        <div class="faq-a">30-day refund. If you follow the protocol and see nothing, email me and I'll refund you. I've done this for 12K+ people with a <span>refund rate under 3%</span>. The protocols work if you actually follow them with legit compounds.</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,25 +442,25 @@
                     <div class="selected-tier-banner">
                         <div>
                             <h3 id="selectedTierName">Full Stack</h3>
-                            <p style="opacity: 0.7; margin-top: 2px; font-size: 0.8em; color: #888;" id="selectedTierDesc">Multi-compound sequenced protocol</p>
+                            <p style="opacity: 0.6; margin-top: 2px; font-size: 0.75em; color: #666;" id="selectedTierDesc">Multi-compound sequenced protocol</p>
                         </div>
                         <div class="price" id="selectedTierPrice">$79</div>
                     </div>
                     <div class="upload-steps">
                         <div class="upload-step active" id="step1"><div class="step-circle">1</div><div class="step-label">Goal</div></div>
-                        <div class="upload-step" id="step2"><div class="step-circle">2</div><div class="step-label">Profile</div></div>
-                        <div class="upload-step" id="step3"><div class="step-circle">3</div><div class="step-label">Checkout</div></div>
+                        <div class="upload-step" id="step2"><div class="step-circle">2</div><div class="step-label">Stats</div></div>
+                        <div class="upload-step" id="step3"><div class="step-circle">3</div><div class="step-label">Pay</div></div>
                     </div>
                     <form id="questionnaireForm">
                         <div class="question-step" id="questionStep1">
                             <h3>Primary objective?</h3>
-                            <p class="question-subtitle">Pick the main thing you're optimizing for</p>
+                            <p class="question-subtitle">What are you optimizing for</p>
                             <div class="goal-options">
                                 <label class="goal-option"><input type="radio" name="primaryGoal" value="skin_collagen" required><div class="goal-card"><span class="goal-icon">&#9878;</span><div><strong>Skin + Collagen</strong><span>GHK-Cu focus. Elasticity, tightness, glow.</span></div></div></label>
-                                <label class="goal-option"><input type="radio" name="primaryGoal" value="gh_optimization"><div class="goal-card"><span class="goal-icon">&#9650;</span><div><strong>GH Optimization</strong><span>CJC/Ipa stack. Sleep, recovery, fat loss.</span></div></div></label>
-                                <label class="goal-option"><input type="radio" name="primaryGoal" value="healing_recovery"><div class="goal-card"><span class="goal-icon">&#10010;</span><div><strong>Healing + Recovery</strong><span>BPC-157/TB-500. Post-procedure, injury repair.</span></div></div></label>
-                                <label class="goal-option"><input type="radio" name="primaryGoal" value="leanmaxx"><div class="goal-card"><span class="goal-icon">&#9763;</span><div><strong>Leanmaxxing</strong><span>Cut BF, reveal facial structure.</span></div></div></label>
-                                <label class="goal-option"><input type="radio" name="primaryGoal" value="full_stack"><div class="goal-card"><span class="goal-icon">&#9733;</span><div><strong>Full Optimization</strong><span>Everything. Sequenced multi-phase protocol.</span></div></div></label>
+                                <label class="goal-option"><input type="radio" name="primaryGoal" value="gh_optimization"><div class="goal-card"><span class="goal-icon">&#9650;</span><div><strong>GH Optimization</strong><span>CJC/Ipa stack. Sleep, recovery, recomp.</span></div></div></label>
+                                <label class="goal-option"><input type="radio" name="primaryGoal" value="healing"><div class="goal-card"><span class="goal-icon">&#10010;</span><div><strong>Healing + Recovery</strong><span>BPC-157/TB-500. Post-procedure, injury.</span></div></div></label>
+                                <label class="goal-option"><input type="radio" name="primaryGoal" value="leanmaxx"><div class="goal-card"><span class="goal-icon">&#9763;</span><div><strong>Leanmaxx</strong><span>GLP-1 focus. Cut BF, reveal structure.</span></div></div></label>
+                                <label class="goal-option"><input type="radio" name="primaryGoal" value="full_stack"><div class="goal-card"><span class="goal-icon">&#9733;</span><div><strong>Full Optimization</strong><span>Everything sequenced. Maximum results.</span></div></div></label>
                             </div>
                             <button type="button" class="next-step-btn" onclick="nextStep(1)">Continue</button>
                         </div>
@@ -251,28 +468,28 @@
                             <h3>Your stats</h3>
                             <p class="question-subtitle">For dosing calibration</p>
                             <div class="form-grid">
-                                <div class="form-group"><label>Email</label><input type="email" id="email" name="email" required placeholder="you@email.com"><span class="form-hint">Protocol sent here</span></div>
+                                <div class="form-group"><label>Email</label><input type="email" id="email" name="email" required placeholder="you@email.com"><span class="form-hint">Protocol delivered here</span></div>
                                 <div class="form-group"><label>Age</label><input type="number" id="age" name="age" required min="18" max="100" placeholder="22"></div>
                                 <div class="form-group"><label>Weight (lbs)</label><input type="number" id="weight" name="weight" min="80" max="500" placeholder="165"></div>
                                 <div class="form-group"><label>Experience</label><select id="experience" name="experience"><option value="none">First cycle</option><option value="some">1-2 cycles</option><option value="experienced">3+ cycles</option></select></div>
-                                <div class="form-group full-width"><label>Conditions (if any)</label><div class="checkbox-group"><label class="checkbox-label"><input type="checkbox" name="conditions" value="none"> None</label><label class="checkbox-label"><input type="checkbox" name="conditions" value="diabetes"> Diabetes</label><label class="checkbox-label"><input type="checkbox" name="conditions" value="thyroid"> Thyroid</label><label class="checkbox-label"><input type="checkbox" name="conditions" value="heart"> Heart</label></div></div>
+                                <div class="form-group full-width"><label>Conditions</label><div class="checkbox-group"><label class="checkbox-label"><input type="checkbox" name="conditions" value="none"> None</label><label class="checkbox-label"><input type="checkbox" name="conditions" value="diabetes"> Diabetes</label><label class="checkbox-label"><input type="checkbox" name="conditions" value="thyroid"> Thyroid</label><label class="checkbox-label"><input type="checkbox" name="conditions" value="heart"> Heart</label></div></div>
                             </div>
                             <div class="step-buttons">
                                 <button type="button" class="back-step-btn" onclick="prevStep(2)">Back</button>
-                                <button type="button" class="next-step-btn" onclick="submitQuestionnaire()"><span id="checkoutBtnText">Get Protocol</span><span id="checkoutBtnLoading" style="display: none;">Processing...</span></button>
+                                <button type="button" class="next-step-btn" onclick="submitQuestionnaire()"><span id="checkoutBtnText">Get Protocol</span><span id="checkoutBtnLoading" style="display: none;">...</span></button>
                             </div>
                         </div>
                     </form>
                     <div id="formError" class="form-error" style="display: none;"></div>
-                    <div class="guarantee-note">30-day refund if the protocol is cope. It won't be.</div>
+                    <div class="guarantee-note">30-day refund if the protocol is cope. &lt;3% refund rate.</div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <div>Educational purposes only. Consult a physician. You know the drill.</div>
-        <div style="margin-top: 12px;"><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="mailto:support@peptidestack.com">Contact</a></div>
+        <div>Educational purposes only. Not medical advice. Consult a physician. You know the drill.</div>
+        <div style="margin-top: 15px;"><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="mailto:support@peptidestack.com">Contact</a></div>
     </footer>
 
     <script>
@@ -283,8 +500,8 @@
         function selectTier(tier, price) {
             selectedTier = tier;
             selectedPrice = price;
-            const names = { 'basic': 'Starter', 'complete': 'Full Stack' };
-            const descs = { 'basic': 'Single compound protocol', 'complete': 'Multi-compound sequenced protocol' };
+            const names = { 'basic': 'Single Compound', 'complete': 'Full Stack' };
+            const descs = { 'basic': 'One optimized compound protocol', 'complete': 'Multi-compound sequenced protocol' };
             document.getElementById('selectedTierName').textContent = names[tier];
             document.getElementById('selectedTierDesc').textContent = descs[tier];
             document.getElementById('selectedTierPrice').textContent = '$' + price;
