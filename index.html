@@ -219,6 +219,68 @@
         footer { background: #030303; color: #222; padding: 40px 20px; text-align: center; font-size: 0.75em; }
         footer a { color: #00ff88; text-decoration: none; margin: 0 12px; }
 
+        /* Concierge Card */
+        .pricing-card.concierge { border-color: #ffd700; background: linear-gradient(180deg, #1a1a0a 0%, #0a0a0a 100%); }
+        .pricing-card.concierge .pricing-tier { color: #ffd700; }
+        .concierge-badge { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #ffd700; color: #050505; padding: 4px 14px; border-radius: 4px; font-weight: 700; font-size: 0.65em; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+        .pricing-card.concierge .pricing-cta { border-color: #ffd700; color: #ffd700; }
+        .pricing-card.concierge .pricing-cta:hover { background: #ffd700; color: #050505; }
+        .pricing-card.concierge .pricing-features li::before { color: #ffd700; }
+
+        /* Mobile Sticky CTA */
+        .mobile-sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #0a0a0a; border-top: 1px solid #00ff88; padding: 12px 20px; z-index: 1000; transform: translateY(100%); transition: transform 0.3s ease; }
+        .mobile-sticky-cta.visible { transform: translateY(0); }
+        .mobile-sticky-cta-inner { display: flex; justify-content: space-between; align-items: center; max-width: 500px; margin: 0 auto; }
+        .mobile-sticky-cta .cta-text { color: #888; font-size: 0.8em; }
+        .mobile-sticky-cta .cta-text strong { color: #fff; display: block; font-size: 1.1em; }
+        .mobile-sticky-cta .cta-btn { background: #00ff88; color: #050505; border: none; padding: 12px 24px; font-size: 0.85em; font-weight: 700; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Social Proof Toast */
+        .toast-container { position: fixed; bottom: 20px; left: 20px; z-index: 999; }
+        .toast { background: #111; border: 1px solid #222; border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; opacity: 0; transform: translateX(-100%); transition: all 0.4s ease; max-width: 320px; }
+        .toast.visible { opacity: 1; transform: translateX(0); }
+        .toast-icon { width: 36px; height: 36px; background: #0a1a0f; border: 1px solid #00ff88; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1em; flex-shrink: 0; }
+        .toast-content { flex: 1; }
+        .toast-text { color: #ccc; font-size: 0.8em; line-height: 1.4; }
+        .toast-text strong { color: #00ff88; }
+        .toast-time { color: #444; font-size: 0.7em; margin-top: 2px; }
+        .toast-close { background: none; border: none; color: #444; cursor: pointer; padding: 4px; font-size: 1em; }
+
+        /* Exit Intent Modal */
+        .exit-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+        .exit-modal-overlay.visible { display: flex; }
+        .exit-modal { background: #0a0a0a; border: 1px solid #00ff88; border-radius: 12px; padding: 40px; max-width: 450px; width: 100%; text-align: center; position: relative; animation: modalSlide 0.3s ease; }
+        @keyframes modalSlide { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .exit-modal-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #444; cursor: pointer; font-size: 1.5em; line-height: 1; }
+        .exit-modal h3 { color: #fff; font-size: 1.4em; margin-bottom: 10px; }
+        .exit-modal .discount-amount { color: #00ff88; font-size: 2.5em; font-weight: 700; margin: 15px 0; }
+        .exit-modal p { color: #666; font-size: 0.9em; margin-bottom: 20px; line-height: 1.6; }
+        .exit-modal input { width: 100%; padding: 14px; background: #080808; border: 1px solid #222; border-radius: 6px; color: #fff; font-size: 1em; margin-bottom: 12px; }
+        .exit-modal input:focus { outline: none; border-color: #00ff88; }
+        .exit-modal .claim-btn { width: 100%; background: #00ff88; color: #050505; border: none; padding: 14px; font-size: 1em; font-weight: 700; border-radius: 6px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        .exit-modal .claim-btn:hover { background: #00cc6a; }
+        .exit-modal .timer-text { color: #ff6666; font-size: 0.85em; margin-top: 15px; }
+        .exit-modal .no-thanks { background: none; border: none; color: #333; font-size: 0.8em; margin-top: 15px; cursor: pointer; }
+
+        /* Countdown Timer */
+        .countdown-wrapper { text-align: center; margin-top: 15px; padding: 12px; background: #080808; border: 1px solid #1a1a1a; border-radius: 6px; max-width: 350px; margin-left: auto; margin-right: auto; }
+        .countdown-label { color: #666; font-size: 0.75em; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .countdown-timer { display: flex; justify-content: center; gap: 15px; }
+        .countdown-unit { text-align: center; }
+        .countdown-value { color: #ff6666; font-size: 1.4em; font-weight: 700; font-variant-numeric: tabular-nums; }
+        .countdown-unit-label { color: #444; font-size: 0.65em; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Order Bump */
+        .order-bump { background: linear-gradient(180deg, #0a1a0f 0%, #080808 100%); border: 2px dashed #00ff88; border-radius: 8px; padding: 15px; margin: 20px 0; display: none; }
+        .order-bump.visible { display: block; }
+        .order-bump-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .order-bump-header input { width: 18px; height: 18px; accent-color: #00ff88; cursor: pointer; }
+        .order-bump-header label { color: #00ff88; font-weight: 700; font-size: 0.9em; cursor: pointer; }
+        .order-bump-price { color: #fff; font-size: 0.85em; }
+        .order-bump-price .original { text-decoration: line-through; color: #666; }
+        .order-bump-price .savings { color: #00ff88; font-weight: 600; }
+        .order-bump-desc { color: #888; font-size: 0.8em; margin-top: 8px; line-height: 1.5; }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 1.8em; }
             .cope-grid, .procedure-grid { grid-template-columns: 1fr; }
@@ -226,10 +288,50 @@
             .form-grid { grid-template-columns: 1fr; }
             .result-stats { justify-content: space-between; }
             .science-grid { grid-template-columns: 1fr 1fr; }
+            .mobile-sticky-cta { display: block; }
+            .toast-container { bottom: 80px; left: 10px; right: 10px; }
+            .toast { max-width: 100%; }
+        }
+        @media (min-width: 769px) {
+            .toast-container { bottom: 20px; }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Sticky CTA -->
+    <div class="mobile-sticky-cta" id="mobileCta">
+        <div class="mobile-sticky-cta-inner">
+            <div class="cta-text"><strong>Get Your Protocol</strong>Starting at $49</div>
+            <button class="cta-btn" onclick="scrollToPricing()">Get Started</button>
+        </div>
+    </div>
+
+    <!-- Social Proof Toast -->
+    <div class="toast-container" id="toastContainer">
+        <div class="toast" id="socialToast">
+            <div class="toast-icon">&#10003;</div>
+            <div class="toast-content">
+                <div class="toast-text" id="toastText"><strong>Mike from LA</strong> just got Full Stack</div>
+                <div class="toast-time" id="toastTime">2 min ago</div>
+            </div>
+            <button class="toast-close" onclick="hideToast()">&times;</button>
+        </div>
+    </div>
+
+    <!-- Exit Intent Modal -->
+    <div class="exit-modal-overlay" id="exitModal">
+        <div class="exit-modal">
+            <button class="exit-modal-close" onclick="closeExitModal()">&times;</button>
+            <h3>Wait - Don't Leave Empty-Handed</h3>
+            <div class="discount-amount">$10 OFF</div>
+            <p>Enter your email and get $10 off any protocol. Discount expires in 15 minutes.</p>
+            <input type="email" id="exitEmail" placeholder="your@email.com">
+            <button class="claim-btn" onclick="claimDiscount()">Claim My $10 Discount</button>
+            <div class="timer-text">Offer expires in <span id="exitTimer">15:00</span></div>
+            <button class="no-thanks" onclick="closeExitModal()">No thanks, I'll pay full price</button>
+        </div>
+    </div>
+
     <div id="landingPage">
         <!-- Hero -->
         <div class="hero">
@@ -589,6 +691,14 @@
                     <h2>Get Your Protocol</h2>
                     <p>One payment. No subscription. No upsells. No BS.</p>
                 </div>
+                <div class="countdown-wrapper">
+                    <div class="countdown-label">Current pricing ends in</div>
+                    <div class="countdown-timer">
+                        <div class="countdown-unit"><div class="countdown-value" id="countdownHours">47</div><div class="countdown-unit-label">Hours</div></div>
+                        <div class="countdown-unit"><div class="countdown-value" id="countdownMinutes">59</div><div class="countdown-unit-label">Min</div></div>
+                        <div class="countdown-unit"><div class="countdown-value" id="countdownSeconds">59</div><div class="countdown-unit-label">Sec</div></div>
+                    </div>
+                </div>
                 <div class="pricing-grid">
                     <div class="pricing-card">
                         <div class="pricing-tier">Single Compound</div>
@@ -615,6 +725,21 @@
                             <li>Timing for your schedule</li>
                         </ul>
                         <button class="pricing-cta" onclick="selectTier('complete', 79)">Get Full Stack</button>
+                    </div>
+                    <div class="pricing-card concierge">
+                        <div class="concierge-badge">For Serious Ascenders</div>
+                        <div class="pricing-tier">Concierge</div>
+                        <div class="pricing-amount">$249</div>
+                        <div class="pricing-period">one-time</div>
+                        <ul class="pricing-features">
+                            <li>Everything in Full Stack</li>
+                            <li>1:1 protocol review call</li>
+                            <li>Priority Discord support</li>
+                            <li>Bloodwork interpretation guide</li>
+                            <li>30-day adjustment window</li>
+                            <li>Direct access to my protocol notes</li>
+                        </ul>
+                        <button class="pricing-cta" onclick="selectTier('concierge', 249)">Get Concierge</button>
                     </div>
                 </div>
             </div>
@@ -691,6 +816,14 @@
                                 <label class="goal-option"><input type="radio" name="primaryGoal" value="leanmaxx"><div class="goal-card"><span class="goal-icon">&#9763;</span><div><strong>Leanmaxx</strong><span>GLP-1 focus. Cut BF, reveal structure.</span></div></div></label>
                                 <label class="goal-option"><input type="radio" name="primaryGoal" value="full_stack"><div class="goal-card"><span class="goal-icon">&#9733;</span><div><strong>Full Optimization</strong><span>Everything sequenced. Maximum results.</span></div></div></label>
                             </div>
+                            <div class="order-bump" id="orderBump">
+                                <div class="order-bump-header">
+                                    <input type="checkbox" id="upgradeCheckbox" onchange="handleUpgrade()">
+                                    <label for="upgradeCheckbox">Upgrade to Full Stack</label>
+                                </div>
+                                <div class="order-bump-price"><span class="original">$79</span> Just <strong>$69</strong> <span class="savings">(Save $10!)</span></div>
+                                <div class="order-bump-desc">Get multi-compound stacking, phase-by-phase breakdown, and synergy optimization for just $20 more.</div>
+                            </div>
                             <button type="button" class="next-step-btn" onclick="nextStep(1)">Continue</button>
                         </div>
                         <div class="question-step" id="questionStep2" style="display: none;">
@@ -725,7 +858,181 @@
         let selectedTier = 'complete';
         let selectedPrice = 79;
         let currentStep = 1;
+        let exitModalShown = false;
+        let toastInterval = null;
 
+        // === Mobile Sticky CTA ===
+        function initMobileCta() {
+            const mobileCta = document.getElementById('mobileCta');
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', () => {
+                if (window.innerWidth <= 768) {
+                    const heroBottom = hero.getBoundingClientRect().bottom;
+                    if (heroBottom < 0) {
+                        mobileCta.classList.add('visible');
+                    } else {
+                        mobileCta.classList.remove('visible');
+                    }
+                }
+            });
+        }
+
+        // === Social Proof Toasts ===
+        const toastMessages = [
+            { name: 'Mike', location: 'LA', tier: 'Full Stack', time: '2 min ago' },
+            { name: 'Jake', location: 'Miami', tier: 'Concierge', time: '5 min ago' },
+            { name: 'Alex', location: 'NYC', tier: 'Full Stack', time: '8 min ago' },
+            { name: 'Chris', location: 'Austin', tier: 'Single Compound', time: '12 min ago' },
+            { name: 'Ryan', location: 'Denver', tier: 'Full Stack', time: '15 min ago' },
+            { name: 'Tyler', location: 'Chicago', tier: 'Concierge', time: '18 min ago' },
+            { name: 'Brandon', location: 'Seattle', tier: 'Full Stack', time: '22 min ago' },
+            { name: 'Kyle', location: 'Phoenix', tier: 'Full Stack', time: '25 min ago' },
+        ];
+        let toastIndex = 0;
+
+        function showToast() {
+            const toast = document.getElementById('socialToast');
+            const toastText = document.getElementById('toastText');
+            const toastTime = document.getElementById('toastTime');
+            const msg = toastMessages[toastIndex];
+            toastText.innerHTML = `<strong>${msg.name} from ${msg.location}</strong> just got ${msg.tier}`;
+            toastTime.textContent = msg.time;
+            toast.classList.add('visible');
+            setTimeout(() => { toast.classList.remove('visible'); }, 5000);
+            toastIndex = (toastIndex + 1) % toastMessages.length;
+        }
+
+        function hideToast() {
+            document.getElementById('socialToast').classList.remove('visible');
+        }
+
+        function initToasts() {
+            setTimeout(() => {
+                showToast();
+                toastInterval = setInterval(showToast, 35000);
+            }, 8000);
+        }
+
+        // === Exit Intent Modal ===
+        let exitTimerInterval = null;
+        let exitTimerSeconds = 900; // 15 minutes
+
+        function initExitIntent() {
+            // Desktop: mouse leaving viewport
+            document.addEventListener('mouseout', (e) => {
+                if (!exitModalShown && e.clientY < 10 && e.relatedTarget === null) {
+                    showExitModal();
+                }
+            });
+            // Mobile: back button (history state)
+            if (window.innerWidth <= 768) {
+                history.pushState(null, '', location.href);
+                window.addEventListener('popstate', () => {
+                    if (!exitModalShown) {
+                        showExitModal();
+                        history.pushState(null, '', location.href);
+                    }
+                });
+            }
+        }
+
+        function showExitModal() {
+            if (localStorage.getItem('exitModalDismissed')) return;
+            exitModalShown = true;
+            document.getElementById('exitModal').classList.add('visible');
+            startExitTimer();
+        }
+
+        function closeExitModal() {
+            document.getElementById('exitModal').classList.remove('visible');
+            localStorage.setItem('exitModalDismissed', 'true');
+            if (exitTimerInterval) clearInterval(exitTimerInterval);
+        }
+
+        function startExitTimer() {
+            exitTimerInterval = setInterval(() => {
+                exitTimerSeconds--;
+                if (exitTimerSeconds <= 0) {
+                    closeExitModal();
+                    return;
+                }
+                const mins = Math.floor(exitTimerSeconds / 60);
+                const secs = exitTimerSeconds % 60;
+                document.getElementById('exitTimer').textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        function claimDiscount() {
+            const email = document.getElementById('exitEmail').value;
+            if (!email || !email.includes('@')) {
+                alert('Please enter a valid email');
+                return;
+            }
+            localStorage.setItem('discountEmail', email);
+            localStorage.setItem('discountClaimed', 'true');
+            closeExitModal();
+            alert('Discount claimed! $10 off has been applied to your next checkout.');
+            scrollToPricing();
+        }
+
+        // === Countdown Timer ===
+        function initCountdown() {
+            let endTime = localStorage.getItem('countdownEndTime');
+            if (!endTime || parseInt(endTime) < Date.now()) {
+                // Set new countdown: 48 hours from now
+                endTime = Date.now() + (48 * 60 * 60 * 1000);
+                localStorage.setItem('countdownEndTime', endTime);
+            }
+            updateCountdown(parseInt(endTime));
+            setInterval(() => updateCountdown(parseInt(localStorage.getItem('countdownEndTime'))), 1000);
+        }
+
+        function updateCountdown(endTime) {
+            const now = Date.now();
+            let diff = Math.max(0, endTime - now);
+            if (diff === 0) {
+                // Reset countdown
+                const newEnd = Date.now() + (48 * 60 * 60 * 1000);
+                localStorage.setItem('countdownEndTime', newEnd);
+                diff = newEnd - now;
+            }
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('countdownHours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('countdownMinutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('countdownSeconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // === Order Bump ===
+        function updateOrderBump() {
+            const orderBump = document.getElementById('orderBump');
+            if (selectedTier === 'basic') {
+                orderBump.classList.add('visible');
+            } else {
+                orderBump.classList.remove('visible');
+                document.getElementById('upgradeCheckbox').checked = false;
+            }
+        }
+
+        function handleUpgrade() {
+            const checkbox = document.getElementById('upgradeCheckbox');
+            if (checkbox.checked) {
+                selectedTier = 'basic_upgrade';
+                selectedPrice = 69;
+                document.getElementById('selectedTierName').textContent = 'Full Stack (Upgrade)';
+                document.getElementById('selectedTierDesc').textContent = 'Multi-compound sequenced protocol';
+                document.getElementById('selectedTierPrice').textContent = '$69';
+            } else {
+                selectedTier = 'basic';
+                selectedPrice = 49;
+                document.getElementById('selectedTierName').textContent = 'Single Compound';
+                document.getElementById('selectedTierDesc').textContent = 'One optimized compound protocol';
+                document.getElementById('selectedTierPrice').textContent = '$49';
+            }
+        }
+
+        // === Core Functions ===
         function toggleNewbie() {
             const content = document.getElementById('newbieContent');
             content.classList.toggle('active');
@@ -745,8 +1052,8 @@
         function selectTier(tier, price) {
             selectedTier = tier;
             selectedPrice = price;
-            const names = { 'basic': 'Single Compound', 'complete': 'Full Stack' };
-            const descs = { 'basic': 'One optimized compound protocol', 'complete': 'Multi-compound sequenced protocol' };
+            const names = { 'basic': 'Single Compound', 'complete': 'Full Stack', 'concierge': 'Concierge', 'basic_upgrade': 'Full Stack (Upgrade)' };
+            const descs = { 'basic': 'One optimized compound protocol', 'complete': 'Multi-compound sequenced protocol', 'concierge': 'Complete protocol + 1:1 support', 'basic_upgrade': 'Multi-compound sequenced protocol' };
             document.getElementById('selectedTierName').textContent = names[tier];
             document.getElementById('selectedTierDesc').textContent = descs[tier];
             document.getElementById('selectedTierPrice').textContent = '$' + price;
@@ -757,6 +1064,8 @@
             document.getElementById('step1').classList.remove('completed');
             document.getElementById('step2').classList.remove('active', 'completed');
             document.getElementById('step3').classList.remove('active');
+            document.getElementById('upgradeCheckbox').checked = false;
+            updateOrderBump();
             document.getElementById('uploadSection').classList.add('active');
             document.getElementById('uploadSection').scrollIntoView({ behavior: 'smooth' });
         }
@@ -827,6 +1136,14 @@
                 document.getElementById('checkoutBtnLoading').style.display = 'none';
             }
         }
+
+        // Initialize all features on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initMobileCta();
+            initToasts();
+            initExitIntent();
+            initCountdown();
+        });
     </script>
 </body>
 </html>

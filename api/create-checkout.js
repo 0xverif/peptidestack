@@ -18,6 +18,11 @@ const PRODUCTS = {
     description: 'Complete protocol + consultation + support',
     price: 24900,
   },
+  basic_upgrade: {
+    name: 'PeptideStack Complete (Upgrade)',
+    description: 'Full 3-phase protocol - upgrade discount',
+    price: 6900, // $69 - discounted from $79
+  },
 };
 
 module.exports = async (req, res) => {
